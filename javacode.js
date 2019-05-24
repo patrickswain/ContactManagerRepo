@@ -2,6 +2,9 @@ var USER_ID = "";
 
 function login()
 {
+	var username = document.getElementById("Username").value;
+  var password = document.getElementByID("Password").value;
+
 	var url = "contactmngr.com/API/Login.php";
 }
 

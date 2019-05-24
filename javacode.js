@@ -1,5 +1,4 @@
-var url = "contactmngr.com";
-
+var USER_ID = "";
 
 function login()
 {
@@ -19,7 +18,9 @@ function addUser()
 function addContact()
 {
 	// Take in contact's name
-	var contact_name = document.getElementById("new_contact_name").value;
+	var contact_first_name = document.getElementById("new_contact__first_name").value;
+	var contact_last_name = document.getElementById("new_contact_last_name").value;
+
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result") = "";
 

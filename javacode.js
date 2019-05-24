@@ -1,3 +1,6 @@
+var url = "contactmngr.com";
+
+
 function login()
 {
 
@@ -20,5 +23,5 @@ function deleteContact()
 
 function editContact()
 {
-	
+
 }

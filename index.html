@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Front End</title>
+    </head>
+    <body>
+        <h1> Contact Manager</h1>
+        <input placeholder="Username" id="Username"><br>
+        <input placeholder="Password" id="Password"><br>
+        <button onclick="add()">Add</button>
+        
+        <div id="contacts"></div>
+        
+        <script>
+            var contacts=[];
+            
+            function add(){
+                var Username= document.getElementById("Username").value;
+                var Password= document.getElementById("Password").value;
+                var newContact= {
+                    newUsername: Username,
+                    newPassword: Password
+                    }
+                    contacts.push(newContact);
+                    
+                    updateDiv();
+                    
+                    document.getElementById("Username").value="";
+                    document.getElementById("Password").value="";
+                    
+            }
+            
+            function updateDiv(){
+                    var tempContent="";
+                    for(var i=0, i< contacts.length;i++){ 
+                            
+                        tempContent += "<p>Name : " + contacts[i].newName+
+            "<br>Password:" + contacts[i].newPassword + "<br><span onclick='del("+ i +")'>[del]</span></p>";
+                    }
+                        
+                    document.getElementById("contacts").innerHTML= tempContent;
+                }
+                function del(i){
+                    contacts.splice(i,1);
+                }
+                
+            </script>
+        </body>
+    </html>
+                

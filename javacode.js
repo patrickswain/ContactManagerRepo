@@ -42,16 +42,19 @@ function addContact()
 	xmlhr.open("POST", url, true);
 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+	// Send jsonText to API
 	try {
 		xmlhr.send(jsonText);
 		xmlhr.onreadystatechange =function(){
 			if (this.readyState == 4 && this.status == 200)
 			{
+				// Update HTML
 				document.getElementById("contact_added_result").innerHTML = "Contact Added";
 			}
 		};
 
 	} catch (e) {
+		// Update HTML
 		document.getElementById("contact_added_result").innerHTML = e.message;
 	}
 

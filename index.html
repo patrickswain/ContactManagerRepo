@@ -2,18 +2,25 @@
 <html>
     <head>
         <title>Front End</title>
+        <script type="text/javascript" src="/javacode.js"></script>
     </head>
     <body>
         <h1> Contact Manager</h1>
         <input placeholder="Username" id="Username"><br>
         <input placeholder="Password" id="Password"><br>
         <button onclick="add()">Add</button>
-        
+
         <div id="contacts"></div>
-        
-        <script>
+
+        <input placeholder="First Name" id = "new_contact_first_name"><br>
+        <input placeholder="Last Name" id = "new_contact_last_name"><br>
+        <input placeholder="Email" id = "new_contact_email"><br>
+        <input placeholder="Phone" id = "new_contact_phone"><br>
+        <button onclick="addContact()">Add a new Contact</button>
+
+        <!-- <script>
             var contacts=[];
-            
+
             function add(){
                 var Username= document.getElementById("Username").value;
                 var Password= document.getElementById("Password").value;
@@ -22,29 +29,28 @@
                     newPassword: Password
                     }
                     contacts.push(newContact);
-                    
+
                     updateDiv();
-                    
+
                     document.getElementById("Username").value="";
                     document.getElementById("Password").value="";
-                    
+
             }
-            
+
             function updateDiv(){
                     var tempContent="";
-                    for(var i=0, i< contacts.length;i++){ 
-                            
+                    for(var i=0, i< contacts.length;i++){
+
                         tempContent += "<p>Name : " + contacts[i].newName+
             "<br>Password:" + contacts[i].newPassword + "<br><span onclick='del("+ i +")'>[del]</span></p>";
                     }
-                        
+
                     document.getElementById("contacts").innerHTML= tempContent;
                 }
                 function del(i){
                     contacts.splice(i,1);
                 }
-                
-            </script>
+
+            </script> -->
         </body>
     </html>
-                

@@ -1,6 +1,7 @@
 function login()
 {
-
+	var username = document.getElementById("Username").value;
+  var password = document.getElementByID("Password").value;
 }
 
 function logout()
@@ -20,5 +21,5 @@ function deleteContact()
 
 function editContact()
 {
-	
+
 }

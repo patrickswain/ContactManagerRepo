@@ -1,11 +1,28 @@
 var USER_ID = "1";
 
+// if login button is pressed call this function
 function login()
 {
-	var username = document.getElementById("Username").value;
-  var password = document.getElementByID("Password").value;
+	var loginUsername = document.getElementById("loginUserNameID").value;
+  var loginPassword = document.getElementByID("loginPasswordID").value;
+  document.getElementById("loginResult").innerHTML = "";
+
+  var jsonStringLogin = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
 
 	var url = "contactmngr.com/API/Login.php";
+  xhr.open("POST", url, false);
+
+  var xhr = new XMLHttpRequest();
+}
+
+// if register button is pressed activated this function
+function register()
+{
+  var regUsername = document.getElementById("regUserNameID").value;
+  var regPassword = document.getElementByID("regPasswordID").value;
+  document.getElementById("regResult").innerHTML = "";
+
+  var jsonStringLogin = '{"login" : "' + regUsername + '", "password" : "' + regPassword + '"}';
 }
 
 function logout()
@@ -30,7 +47,7 @@ function addContact()
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";
 	document.getElementById("new_contact_first_name").innerHTML = "";
-	
+
 	var jsonText = '{"FirstName" : "' + contact_first_name + '",
 			              "LastName" : "' + contact_last_name + '",
 										"User_ID"  : "' + USER_ID + '",

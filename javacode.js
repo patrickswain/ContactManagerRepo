@@ -1,4 +1,4 @@
-var USER_ID = "";
+var USER_ID = "1";
 
 function login()
 {
@@ -26,9 +26,11 @@ function addContact()
 	var contact_email = document.getElementById("new_contact_email").value;
 	var contact_phone = document.getElementById("new_contact_phone").value;
 
-	// Set result intdicator to blank
-	document.getElementById("contact_added_result") = "";
 
+	// Set result intdicator to blank
+	document.getElementById("contact_added_result").innerHTML = "";
+	document.getElementById("new_contact_first_name").innerHTML = "";
+	
 	var jsonText = '{"FirstName" : "' + contact_first_name + '",
 			              "LastName" : "' + contact_last_name + '",
 										"User_ID"  : "' + USER_ID + '",

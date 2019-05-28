@@ -1,28 +1,11 @@
-var USER_ID = "1";
+var USER_ID = "";
 
-// if login button is pressed call this function
 function login()
 {
-	var loginUsername = document.getElementById("loginUserNameID").value;
-  var loginPassword = document.getElementByID("loginPasswordID").value;
-  document.getElementById("loginResult").innerHTML = "";
-
-  var jsonStringLogin = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
+	var username = document.getElementById("Username").value;
+  var password = document.getElementByID("Password").value;
 
 	var url = "contactmngr.com/API/Login.php";
-  xhr.open("POST", url, false);
-
-  var xhr = new XMLHttpRequest();
-}
-
-// if register button is pressed activated this function
-function register()
-{
-  var regUsername = document.getElementById("regUserNameID").value;
-  var regPassword = document.getElementByID("regPasswordID").value;
-  document.getElementById("regResult").innerHTML = "";
-
-  var jsonStringLogin = '{"login" : "' + regUsername + '", "password" : "' + regPassword + '"}';
 }
 
 function logout()
@@ -32,7 +15,43 @@ function logout()
 
 function addUser()
 {
+	// Take in new user info
+	var username = document.getElementById("new_user_name").value;
+	var password = document.getElementById("new_password").value;
+	var user_first_name = document.getElementById("new_user_first_name").value;
+	var user_last_name = document.getElementById("new_user_last_name").value;
+		// Don't need date created or User Id - those are done in application
+
+	//USER_ID = Set user id from given id from api
+
+	// Set result indicator to blank
+	document.getElementById("user_added_result").innerHTML = "";
+
+	var jsonText = '{"Username" : "' + username + '",
+									 "Password" : "' + password + '",
+								   "FirstName" : "' + user_first_name + '",
+								   "LastName" : "' + user_last_name + '"}';
+
+	// Connect to API
 	var url = "contactmngr.com/API/CreateUser.php";
+	var xmlhr = new XMLHttpRequest();
+	xmlhr.open("POST", url, true);
+	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xmlhr.send(jsonText);
+		xmlhr.onreadystatechange =function(){
+			if (this.readyState == 4 && this.status == 200)
+			{
+				// Update HTML
+				document.getElementById("user_added_result").innerHTML = "Contact Added";
+			}
+		};
+	} catch (e) {
+		document.getElementById("user_added_result").innerHTML = e.message;
+	}
+
+
 }
 
 function addContact()
@@ -46,7 +65,7 @@ function addContact()
 
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";
-	document.getElementById("new_contact_first_name").innerHTML = "";
+	//document.getElementById("new_contact_first_name").innerHTML = "";
 
 	var jsonText = '{"FirstName" : "' + contact_first_name + '",
 			              "LastName" : "' + contact_last_name + '",

@@ -6,7 +6,7 @@
 	$firstName = "";
 	$lastName = "";
 
-	$conn = new mysqli("198.71.225.55:3306", "User", "Password1", "Contacts");
+	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "ContactInfo");
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );

@@ -55,7 +55,13 @@ function login()
 
 function logout()
 {
+	USER_ID = 0;
+	firstName = "";
+	lastName = "";
 
+	hideOrShow( "loggedInDiv", false);
+	hideOrShow( "accessUIDiv", false);
+	hideOrShow( "loginDiv", true);
 }
 
 function addUser()

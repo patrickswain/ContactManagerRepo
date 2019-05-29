@@ -1,11 +1,56 @@
 var USER_ID = "";
+var firstName = "";
+var lastName = "";
 
 function login()
 {
-	var username = document.getElementById("Username").value;
-  var password = document.getElementByID("Password").value;
+  // retrieve textbox information
+	var loginUsername = document.getElementById("username_textbox").value;
+  var loginPassword = document.getElementByID("password_textbox").value;
 
+  document.getElementByID("login_result");
+
+  // turn json object to string
+  var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
+
+  // setting up xhr object to connect to server
 	var url = "contactmngr.com/API/Login.php";
+  var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+  try
+	{
+		xhr.send(jsonLoginString);
+
+    // turn string back to jsonObject
+		var jsonObject = JSON.parse( xhr.responseText );
+
+    // get user id from the updated jsonObject
+		USER_ID = jsonObject.id;
+
+    // if id is less than 1 that means the combination is not in our server.
+		if( userId < 1 )
+		{
+			document.getElementById("login_result").innerHTML = "Username or Password is incorrect";
+			return;
+		}
+
+    // retrieve first name and last name from the updated jsonObject
+		firstName = jsonObject.firstName;
+		lastName = jsonObject.lastName;
+
+		document.getElementById("username_textbox").value = "";
+		document.getElementById("password_textbox").value = "";
+
+		hideOrShow( "loggedInDiv", true);
+		hideOrShow( "accessUIDiv", true);
+		hideOrShow( "loginDiv", false);
+	}
+	catch(err)
+	{
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
 }
 
 function logout()

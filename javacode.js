@@ -40,6 +40,7 @@ function addUser()
 
 	try {
 		xmlhr.send(jsonText);
+		// update user id
 		xmlhr.onreadystatechange =function(){
 			if (this.readyState == 4 && this.status == 200)
 			{
@@ -105,6 +106,11 @@ function deleteContact()
 }
 
 function editContact()
+{
+
+}
+
+function hashPassword(password)
 {
 
 }

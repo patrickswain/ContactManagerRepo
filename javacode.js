@@ -155,6 +155,21 @@ function editContact()
 
 }
 
+// credit to Professor Rick Leinecker for this function
+function hideOrShow( elementId, showState )
+{
+	var vis = "visible";
+	var dis = "block";
+	if( !showState )
+	{
+		vis = "hidden";
+		dis = "none";
+	}
+
+	document.getElementById( elementId ).style.visibility = vis;
+	document.getElementById( elementId ).style.display = dis;
+}
+
 function hashPassword(password)
 {
 

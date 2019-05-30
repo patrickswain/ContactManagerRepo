@@ -16,17 +16,18 @@
 	{
 		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $inData["FirstName"] . "','" . $inData["LastName"] . "')";
 		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
-		{
-			$row = $result->fetch_assoc();
-			$id = $row["User_ID"];
 
-			returnWithInfo($id);
-		}
-
-		elseif( $result = $conn->query($sql) != TRUE )
+		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );
+		}
+
+		elseif ($result->num_rows > 0)
+		{
+			$row = $result->fetch_assoc();
+			$id = $row["ID"];
+
+			returnWithInfo($id);
 		}
 
 		$conn->close();

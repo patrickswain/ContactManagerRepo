@@ -24,10 +24,10 @@
 			returnWithInfo($id);
 		}
 
-		// if( $result = $conn->query($sql) != TRUE )
-		// {
-		// 	returnWithError( $conn->error );
-		// }
+		elseif( $result = $conn->query($sql) != TRUE )
+		{
+			returnWithError( $conn->error );
+		}
 
 		$conn->close();
 
@@ -50,7 +50,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo($id )
 	{
 		$retValue = '{"id":' . $id . '}';
 		sendResultInfoAsJson( $retValue );

@@ -19,7 +19,16 @@
 		{
 			returnWithError( $conn->error );
 		}
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
+		{
+			$row = $result->fetch_assoc();
+			$id = $row["User_ID"];
+
+			returnWithInfo($id );
+
 		$conn->close();
+
 	}
 
 	function getRequestInfo()
@@ -36,6 +45,12 @@
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+
+	function returnWithInfo( $firstName, $lastName, $id )
+	{
+		$retValue = '{"id":' . $id . '}';
 		sendResultInfoAsJson( $retValue );
 	}
 

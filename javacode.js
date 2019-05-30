@@ -1,4 +1,4 @@
-var USER_ID = "";
+var USER_ID = "0";
 var firstName = "";
 var lastName = "";
 

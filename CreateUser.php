@@ -24,10 +24,10 @@
 			returnWithInfo($id);
 		}
 
-		if( $result = $conn->query($sql) != TRUE )
-		{
-			returnWithError( $conn->error );
-		}
+		// if( $result = $conn->query($sql) != TRUE )
+		// {
+		// 	returnWithError( $conn->error );
+		// }
 
 		$conn->close();
 

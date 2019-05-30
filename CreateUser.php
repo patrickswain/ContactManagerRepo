@@ -16,15 +16,12 @@
 	else
 	{
 		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $firstName . "','" . $lastName . "')";
-		$result = $conn->query($sql);
-
-		if( $result != TRUE )
+		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );
 		}
 
 		$sql = "SELECT ID FROM Login where UserName='" . $userName . "' and Password='" . $password. "'";
-		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
 			$row = $result->fetch_assoc();

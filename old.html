@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+		<meta charset = "utf-8" />
+        <title>CONTACT MNGR</title>
+    </head>
+
+    <body>
+		<div id="login" class="animate form">
+			<h1> Contact Manager Log In</h1>
+
+			<p>
+				<input placeholder="Username" id="Username" required="required"><br>
+				<input placeholder="Password" id="Password" required="required"><br>
+				<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+				<label for="loginkeeping">Keep me logged in</label><br>
+				<button onclick = "login()" >Login </button>
+			</p>
+			<p class="register">
+				Not a member?
+				<a href="#toregister" class="to_register"> Sign up </a>
+			</p>
+			</form>
+		</div>
+
+        <div id="contacts"></div>
+
+		<div id="register" class="animate form">
+			<form  action="mysuperscript.php" autocomplete="on">
+				<h1> Sign up </h1>
+				<p>
+					<input placeholder="New Username" id="Username" required="required" type="username"><br>
+					<input placeholder="New Password" id="Password" name="passwordsignup" required="required" type="password"><br>
+					<input placeholder="Re-enter New Password" id="Password_confirm" name="passwordsignup_confirm" required="required" type="password"><br>
+				</p>
+				<p class="signin button">
+					<input type="submit" value="Register"/>
+				</p>
+
+				<p class="change_link">
+					Already registered?
+					<a href="#tologin" class="to_register"> Log in </a>
+				</p>
+			</form>
+		</div>
+ </body>
+</html>

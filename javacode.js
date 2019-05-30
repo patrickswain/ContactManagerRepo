@@ -43,9 +43,9 @@ function login()
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
 
-		hideOrShow( "loggedInDiv", true);
+		hideOrShow( "contactsPage", true);
 		hideOrShow( "accessUIDiv", true);
-		hideOrShow( "loginDiv", false);
+		hideOrShow( "loginPage", false);
 	}
 	catch(err)
 	{

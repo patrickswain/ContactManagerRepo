@@ -1,43 +1,46 @@
 <?php
 
-	$inData = getRequestInfo();
+  $inData = getRequestInfo();
 
-  $UserId = 0;
-	$firstName = "";
-	$lastName = "";
-  $phone = "";
+  $userID= 0;
+  $firstName = "";
+  $lastName = "";
+  $phoneNumber = "";
   $email = "";
   $address = "";
 
-	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
+
+  $conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
 	}
 	else
 	{
-    $sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["id"] . "'";
+		$sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["id"] . "'";
 		$result = $conn->query($sql);
-    if ($result->num_rows > 0)
+		if ($result->num_rows > 0)
 		{
-			$row = $result->fetch_assoc();
-			$firstName = $row["FirstName"];
-			$lastName = $row["LastName"];
-			$UserId = $row["User_ID"];
-      $phone = $row["PhoneNumber"];
+      $row = $result->fetch_assoc();
+      $firstName = $row["FirstName"];
+      $lastName = $row["LastName"];
+      $userID = $row["User_ID"];
+      $phoneNumber = $row["PhoneNumber"];
       $email = $row["Email"];
-      $address = $row["Address"];
+      $address = $row["Address"]
 
-			returnWithInfo($firstName, $lastName, $UserId, $phone, $email, $address);
+
+
 		}
 		else
 		{
 			returnWithError( "No Records Found" );
 		}
 		$conn->close();
+
+    returnWithInfo($firstName, $lastName, $userID, $phoneNumber, $email, $address)
 	}
 
-	returnWithInfo( $searchResults );
 
 	function getRequestInfo()
 	{
@@ -52,13 +55,14 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $UserId, $phone, $email, $address )
+	function     returnWithInfo($firstName, $lastName, $userID, $phoneNumber, $email, $address)
 	{
-		$retValue = '{"UserId":' . $UserId . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","phone":"' . $phone . '","email":"' . $email . '","address":"' . $address . '"}';
+    $retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
+	  sendResultInfoAsJson( $retValue );
 	}
 
 ?>

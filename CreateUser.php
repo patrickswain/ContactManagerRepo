@@ -23,11 +23,12 @@
 			returnWithError( $conn->error );
 		}
 
-		$sql = "SELECT ID,FirstName,LastName FROM Login where UserName='" . $inData["login"] . "' and Password='" . $inData["password"] . "'";
+		$sql = "SELECT ID FROM Login where UserName='" $userName "' and Password='" $password "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
 			$id = $row["ID"];
+
 			returnWithInfo( $id );
 		}
 
@@ -52,7 +53,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo($id )
+	function returnWithInfo( $id )
 	{
 		$retValue = '{"id":' . $id . '}';
 		sendResultInfoAsJson( $retValue );

@@ -1,56 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
     <head>
+		<meta charset = "utf-8" />
         <title>Front End</title>
-        <script type="text/javascript" src="/javacode.js"></script>
     </head>
+
     <body>
-        <h1> Contact Manager</h1>
-        <input placeholder="Username" id="Username"><br>
-        <input placeholder="Password" id="Password"><br>
-        <button onclick="add()">Add</button>
-
+		<div id="login" class="animate form">
+			<h1> Contact Manager Log In</h1>
+			<form  action="mysuperscript.php" autocomplete="on"> 
+			<p>
+				<input placeholder="Username" id="Username" required="required"><br>
+				<input placeholder="Password" id="Password" required="required"><br>
+				<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+				<label for="loginkeeping">Keep me logged in</label><br>
+				<button onclick = "login()" >Login </button>
+			</p>
+			<p class="register">
+				Not a member?
+				<a href="#toregister" class="to_register"> Sign up </a>
+			</p>
+			</form>
+		</div>
+        
         <div id="contacts"></div>
-
-        <input placeholder="First Name" id = "new_contact_first_name"><br>
-        <input placeholder="Last Name" id = "new_contact_last_name"><br>
-        <input placeholder="Email" id = "new_contact_email"><br>
-        <input placeholder="Phone" id = "new_contact_phone"><br>
-        <button onclick="addContact()">Add a new Contact</button>
-        <span id="contact_added_result"></span>
-        <!-- <script>
+		
+		<div id="register" class="animate form">
+			<form  action="mysuperscript.php" autocomplete="on"> 
+				<h1> Sign up </h1> 
+				<p> 
+					<input placeholder="New Username" id="Username" required="required" type="username"><br>
+					<input placeholder="New Password" id="Password" name="passwordsignup" required="required" type="password"><br>
+					<input placeholder="Re-enter New Password" id="Password_confirm" name="passwordsignup_confirm" required="required" type="password"><br>
+				</p>
+				<p class="signin button"> 
+					<input type="submit" value="Register"/> 
+				</p>
+				
+				<p class="change_link">  
+					Already registered?
+					<a href="#tologin" class="to_register"> Log in </a>
+				</p>
+			</form>
+		</div>
+		
+        
+        <script>
             var contacts=[];
-
+            
             function add(){
-                var Username= document.getElementById("Username").value;
+                var Username= document.getElementById("Username or email").value;
                 var Password= document.getElementById("Password").value;
                 var newContact= {
                     newUsername: Username,
                     newPassword: Password
                     }
                     contacts.push(newContact);
-
+                    
                     updateDiv();
-
+                    
                     document.getElementById("Username").value="";
                     document.getElementById("Password").value="";
-
+                    
             }
-
+            
             function updateDiv(){
                     var tempContent="";
-                    for(var i=0, i< contacts.length;i++){
-
+                    for(var i = 0, i < contacts.length; i++)
+					{ 
+                            
                         tempContent += "<p>Name : " + contacts[i].newName+
             "<br>Password:" + contacts[i].newPassword + "<br><span onclick='del("+ i +")'>[del]</span></p>";
                     }
-
+                        
                     document.getElementById("contacts").innerHTML= tempContent;
                 }
                 function del(i){
                     contacts.splice(i,1);
                 }
-
-            </script> -->
+                
+            </script>
         </body>
     </html>
+                
+				

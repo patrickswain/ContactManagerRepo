@@ -15,6 +15,13 @@
 	}
 	else
 	{
+		$sql = "SELECT * FROM ContactInfo WHERE UserName='$userName'";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
+		{
+			returnWithError("User Name already exists");
+		}
+
 		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $firstName . "','" . $lastName . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
@@ -22,6 +29,7 @@
 		}
 
 		$sql = "SELECT ID FROM Login where UserName='" . $userName . "' and Password='" . $password. "'";
+		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
 			$row = $result->fetch_assoc();

@@ -2,7 +2,7 @@
 
 	$inData = getRequestInfo();
 
-  $id = 0;
+  $UserId = 0;
 	$firstName = "";
 	$lastName = "";
   $phone = "";
@@ -21,14 +21,14 @@
     if ($result->num_rows > 0)
 		{
 			$row = $result->fetch_assoc();
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-			$id = $row["ID"];
+			$firstName = $row["FirstName"];
+			$lastName = $row["LastName"];
+			$UserId = $row["User_ID"];
       $phone = $row["PhoneNumber"];
       $email = $row["Email"];
-      $address = $row["address"];
+      $address = $row["Address"];
 
-			returnWithInfo($firstName, $lastName, $id, $phone, $email, $address);
+			returnWithInfo($firstName, $lastName, $UserId, $phone, $email, $address);
 		}
 		else
 		{
@@ -56,10 +56,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id, $phone, $email, $address )
+	function returnWithInfo( $firstName, $lastName, $UserId, $phone, $email, $address )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","phone":"'. $phone .'","email":"'. $email .'""address":"'. $address .'"}';
-		sendResultInfoAsJson( $retValue );
+		$retValue = '{"UserId":' . $UserId . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","phone":"' . $phone . '","email":"' . $email . '","address":"' . $address . '"}';
 	}
 
 ?>

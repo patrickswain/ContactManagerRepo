@@ -6,6 +6,7 @@
 	$password = $inData["Password"];
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
+	$id = 0;
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)

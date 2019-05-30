@@ -15,7 +15,7 @@
 	}
 	else
 	{
-		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $inData["FirstName"] . "','" . $inData["LastName"] . "')";
+		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $firstName . "','" . $lastName . "')";
 		$result = $conn->query($sql);
 
 		if( $result != TRUE )
@@ -27,6 +27,7 @@
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
+			$row = $result->fetch_assoc();
 			$id = $row["ID"];
 
 			returnWithInfo( $id );

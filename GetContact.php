@@ -27,9 +27,7 @@
       $userID = $row["User_ID"];
       $phoneNumber = $row["PhoneNumber"];
       $email = $row["Email"];
-      $address = $row["Address"]
-
-
+      $address = $row["Address"];
 
 		}
 		else
@@ -38,7 +36,7 @@
 		}
 		$conn->close();
 
-    returnWithInfo($firstName, $lastName, $userID, $phoneNumber, $email, $address)
+    returnWithInfo($firstName, $lastName, $userID, $phoneNumber, $email, $address);
 	}
 
 

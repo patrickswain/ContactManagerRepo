@@ -16,7 +16,7 @@
 	}
 	else
 	{
-    $sql = "SELECT * FROM ContactInfo WHERE Contact_ID = " . $inData["Contact_ID"] . ")";
+    $sql = "SELECT * FROM ContactInfo WHERE Contact_ID = '" . $inData["Contact_ID"] . "')";
 		$result = $conn->query($sql);
     if ($result->num_rows > 0)
 		{

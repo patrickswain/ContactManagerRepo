@@ -23,7 +23,7 @@
 			returnWithError( $conn->error );
 		}
 
-		$sql = "SELECT ID FROM Login where UserName='" . $inData["UserName"] . "' and Password='" . $inData["Password"] . "'";
+		$sql = "SELECT ID FROM Login where UserName='" . $userName . "' and Password='" . $password. "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{

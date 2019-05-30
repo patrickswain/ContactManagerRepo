@@ -17,12 +17,12 @@
 		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $inData["FirstName"] . "','" . $inData["LastName"] . "')";
 		$result = $conn->query($sql);
 
-		if( $result = $conn->query($sql) != TRUE )
+		if( $result != TRUE )
 		{
 			returnWithError( $conn->error );
 		}
 
-		if ($result->num_rows > 0)
+		elseif ($result->num_rows > 0)
 		{
 			$row = $result->fetch_assoc();
 			$id = $row["ID"];

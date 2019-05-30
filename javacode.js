@@ -43,13 +43,13 @@ function login()
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
 
-		hideOrShow( "contactsPage", true);
-		hideOrShow( "accessUIDiv", true);
-		hideOrShow( "loginPage", false);
+		//hideOrShow( "contactsPage", true);
+		//hideOrShow( "accessUIDiv", true);
+		//hideOrShow( "loginPage", false);
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("login_result").innerHTML = err.message;
 	}
 }
 

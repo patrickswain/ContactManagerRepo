@@ -215,6 +215,21 @@ function editContact ()
 	xmlhr.open("POST", editContactUrl, true);
 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+	// Send jsonText to API
+	try {
+		xmlhr.send(jsonText);
+		xmlhr.onreadystatechange =function(){
+			if (this.readyState == 4 && this.status == 200)
+			{
+				// Update HTML
+				document.getElementById("contact_edited_result").innerHTML = "Contact Edited";
+			}
+		};
+
+	} catch (e) {
+		// Update HTML
+		document.getElementById("contact_edited_result").innerHTML = e.message;
+	}
 }
 
 

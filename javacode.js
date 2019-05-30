@@ -8,7 +8,7 @@ function login()
 	var loginUsername = document.getElementById("username_textbox").value;
   var loginPassword = document.getElementByID("password_textbox").value;
 
-  document.getElementByID("login_result") = "";
+  document.getElementByID("login_result") = "test-test-test";
 
   // turn json object to string
   var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
@@ -30,7 +30,7 @@ function login()
 		USER_ID = jsonObject.id;
 
     // if id is less than 1 that means the combination is not in our server.
-		if( userId < 1 )
+		if( USER_ID < 1 )
 		{
 			document.getElementById("login_result").innerHTML = "Username or Password is incorrect";
 			return;
@@ -42,7 +42,7 @@ function login()
 
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
-
+		document.getElementById("login_result").innerHTML = "logged in";
 		//hideOrShow( "contactsPage", true);
 		//hideOrShow( "accessUIDiv", true);
 		//hideOrShow( "loginPage", false);

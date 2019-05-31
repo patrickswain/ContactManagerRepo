@@ -27,8 +27,9 @@
 		else
 		{
 			//returnWithError( "No Records Found" );
-			$id = 0;
-			returnWithInfo($id);
+			$firstName = "";
+			$lastName = "";
+			returnWithInfo($firstName, $lastName, $id );
 		}
 		$conn->close();
 	}

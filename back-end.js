@@ -27,7 +27,7 @@ function login()
 		var jsonObject = JSON.parse( xhr.responseText );
 
     // get user id from the updated jsonObject
-		USER_ID = jsonObject.id;
+		USER_ID = jsonObject.ID;
 
     // if id is less than 1 that means the combination is not in our server.
 		if( USER_ID < 1 )

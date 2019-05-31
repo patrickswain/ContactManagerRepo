@@ -17,16 +17,40 @@
           <label>Username</label><br>
           <input type = "text"
                  id = "username_textbox"
-                 value = "" /><br>
+                 placeholder="Enter Username"/><br>
           <label>Password</label><br>
           <input type = "text"
                  id = "password_textbox"
-                 value = "" /><br>
+                 placeholder="Enter Password" /><br>
           <p id = "login_result">temporary text</p>
 
           <button onclick = "alert('hello')" >Alert </button>
           <button onclick = "login()" >Login </button>
+          <button onclick = "document.getElementById('create_user_modal').style.display='none'">Create New Account</button>
         </form>
+        <div id = "create_user_modal" style.display='none'>
+          <h1>Create New User</h1>
+          <form>
+            <label>New Username</label><br>
+            <input type = "text"
+                   id = "new_user_name"
+                   placeholder="Enter Username"/><br>
+            <label>New Password</label><br>
+            <input type = "text"
+                   id = "new_password"
+                   placeholder="Enter Password" /><br>
+            <label>First Name</label><br>
+            <input type = "text"
+                   id = "new_user_first_name"
+                   placeholder="Enter First Name" /><br>
+            <label>Last Name</label><br>
+            <input type = "text"
+                   id = "new_user_last_name"
+                   placeholder="Enter Last Name" /><br>
+            <p id = "user_added_result">temporary text</p>
+
+            <button onclick = "alert('hello')" >Create User</button>
+
       </div>
       <!--
         Contacts page

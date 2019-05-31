@@ -6,7 +6,7 @@ function login()
 {
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
-  var loginPassword = document.getElementByID("password_textbox").value;
+  var loginPassword = document.getElementById("password_textbox").value;
 
   document.getElementById("login_result").innerHTML = "test-test-test";
 

@@ -71,9 +71,6 @@ function addUser()
 	var password = document.getElementById("new_password").value;
 	var user_first_name = document.getElementById("new_user_first_name").value;
 	var user_last_name = document.getElementById("new_user_last_name").value;
-		// Don't need date created or User Id - those are done in application
-
-	//USER_ID = Set user id from given id from api
 
 	// Set result indicator to blank
 	document.getElementById("user_added_result").innerHTML = "";
@@ -99,8 +96,6 @@ function addUser()
 	} catch (e) {
 		document.getElementById("user_added_result").innerHTML = e.message;
 	}
-
-
 }
 
 // function addContact()

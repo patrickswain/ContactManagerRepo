@@ -75,7 +75,7 @@ function addUser()
 	// Set result indicator to blank
 	document.getElementById("user_added_result").innerHTML = "";
 
-	var jsonText = '{"Username" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
+	var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
 
 	// Connect to API
 	var url = "/API/CreateUser.php";

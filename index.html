@@ -26,9 +26,12 @@
 
           <button onclick = "alert('hello')" >Alert </button>
           <button onclick = "login()" >Login </button>
-          <button onclick = "document.getElementById('create_user_modal').style.display='none'">Create New Account</button>
+          <button onclick = "document.getElementById('create_user_modal').style.display='block'">Create New Account</button>
         </form>
-        <div id = "create_user_modal" style.display='none'>
+        <!--
+          Create Account popup modal
+        -->
+        <div id = "create_user_modal" style.display="none">
           <h1>Create New User</h1>
           <form>
             <label>New Username</label><br>
@@ -49,7 +52,7 @@
                    placeholder="Enter Last Name" /><br>
             <p id = "user_added_result">temporary text</p>
 
-            <button onclick = "alert('hello')" >Create User</button>
+            <button onclick = "addUser()" >Create User</button>
 
       </div>
       <!--
@@ -59,6 +62,16 @@
         -->
       <div id = "contactsPage">
 				<h1> Contact Manager</h1>
+        <div id = "topOfPage">
+          <input type = "text"
+                 id = "search_textbox"
+                 placeholder="Search for Contacts..."/>
+          <button onclick = "alert('hola')"> Search</button>
+          <button onclick = "addContact()">Add Contact</button>
+        </div>
+        <div id = "contactDisplay">
+          <label>contacts shown here</label>
+        </div>
       </div>
 
 

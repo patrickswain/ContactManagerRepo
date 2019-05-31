@@ -236,10 +236,10 @@ function hideOrShow( elementId, showState )
 		vis = "hidden";
 		dis = "none";
 	}
-//
-// 	document.getElementById( elementId ).style.visibility = vis;
-// 	document.getElementById( elementId ).style.display = dis;
-// }
+
+	document.getElementById( elementId ).style.visibility = vis;
+	document.getElementById( elementId ).style.display = dis;
+}
 //
 // function hashPassword(password)
 // {

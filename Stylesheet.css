@@ -1,3 +1,13 @@
 body {
-	background-color: #EDF5E1
+	background-color: ##f45f42
+}
+
+h1 {
+	color: #000fff
+	font-family: 'Open Sans', sans-serif;
+}
+
+p {
+	color: #000fff
+	font-family: 'Roboto', sans-serif;
 }

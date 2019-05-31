@@ -14,7 +14,7 @@ function login()
   var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
 
   // setting up xhr object to connect to server
-	var url = "contactmngr.com/API/Login.php";
+	var url = "/API/Login.php";
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -81,7 +81,7 @@ function addUser()
 	var jsonText = '{"Username" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
 
 	// Connect to API
-	var url = "contactmngr.com/API/CreateUser.php";
+	var url = "/API/CreateUser.php";
 	var xmlhr = new XMLHttpRequest();
 	xmlhr.open("POST", url, true);
 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -118,7 +118,7 @@ function addUser()
 // 	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address '}';
 //
 // 	// Connect to API
-// 	var url = "contactmngr.com/API/AddContact.php";
+// 	var url = "/API/AddContact.php";
 // 	var xmlhr = new XMLHttpRequest();
 // 	xmlhr.open("POST", url, true);
 // 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -150,7 +150,7 @@ function deleteContact()
 // Display current contact info in popupwindow
 // function editContactWindow()
 // {
-// 	var getContactUrl = "contactmngr.com/API/GetContact.php";
+// 	var getContactUrl = "/API/GetContact.php";
 // 	var xmlhr = new XMLHttpRequest();
 //
 // 	xmlhr.open("POST", getContactUrl, false);
@@ -186,7 +186,7 @@ function deleteContact()
 // // Send new contact info to database
 // function editContact ()
 // {
-// 	var editContactUrl = "contactmngr.com/API/EditContact.php";
+// 	var editContactUrl = "/API/EditContact.php";
 //
 // 	var edited_first = document.getElementById("edited_first_textbox").value;
 // 	var edited_last = document.getElementById("edited_last_textbox").value;
@@ -226,16 +226,16 @@ function deleteContact()
 //
 //
 //
-// // credit to Professor Rick Leinecker for this function
-// function hideOrShow( elementId, showState )
-// {
-// 	var vis = "visible";
-// 	var dis = "block";
-// 	if( !showState )
-// 	{
-// 		vis = "hidden";
-// 		dis = "none";
-// 	}
+// credit to Professor Rick Leinecker for this function
+function hideOrShow( elementId, showState )
+{
+	var vis = "visible";
+	var dis = "block";
+	if( !showState )
+	{
+		vis = "hidden";
+		dis = "none";
+	}
 //
 // 	document.getElementById( elementId ).style.visibility = vis;
 // 	document.getElementById( elementId ).style.display = dis;

@@ -8,7 +8,7 @@ function login()
 	var loginUsername = document.getElementById("username_textbox").value;
   var loginPassword = document.getElementByID("password_textbox").value;
 
-  document.getElementByID("login_result") = "test-test-test";
+  document.getElementByID("login_result").value = "test-test-test";
 
   // turn json object to string
   var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';

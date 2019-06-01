@@ -28,7 +28,20 @@
 
           <button onclick = "alert('hello')" >Alert </button>
           <button onclick = "login()" >Login </button>
-          <button onclick = "document.getElementById('create_user_modal').style.display='block'">Create New Account</button>
+          <button id = "add_user">Create New Account</button>
+          <!-- script to make modal appear-->
+          <script>
+            var modal = document.getElementById("create_user_modal");
+          	var add_user_button = document.getElementById("add_user");
+
+          	add_user_button.onclick = function() {
+          		modal.style.display = "block";
+          	}
+
+          	window.onclick = function() {
+          		modal.style.display = "none";
+          	}
+            </script>
         </form>
         <!--
           Create Account popup modal

@@ -235,6 +235,20 @@ function hideOrShow( elementId, showState )
 	document.getElementById( elementId ).style.visibility = vis;
 	document.getElementById( elementId ).style.display = dis;
 }
+
+function modalWindow()
+{
+	var modal = document.getElementById("create_user_modal");
+	var add_user_button = document.getElementById("add_user");
+
+	add_user_button.onclick = function() {
+		modal.style.display = "block";
+	}
+
+	window.onclick = function() {
+		modal.style.display = "none";
+	}
+}
 //
 // function hashPassword(password)
 // {

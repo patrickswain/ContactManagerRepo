@@ -11,3 +11,10 @@ p {
 	color: #494949;
 	font-family: 'Roboto', sans-serif;
 }
+
+.modal {
+	display: none; /* Hidden */
+  position: fixed; 
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+}

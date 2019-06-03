@@ -105,6 +105,7 @@ function addContact()
 	var contact_last_name = document.getElementById("add_lastname_textbox").value;
 	var contact_email = document.getElementById("add_phone_textbox").value;
 	var contact_phone = document.getElementById("add_email_textbox").value;
+	var contact_address = document.getElementById("add_address_textbox").value;
 
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";

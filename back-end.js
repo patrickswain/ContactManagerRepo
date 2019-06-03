@@ -110,7 +110,7 @@ function addContact()
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";
 
-	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '"}';
+	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '"}';
 	//var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
 	//previous string
 	//var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address '"}';

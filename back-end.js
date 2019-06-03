@@ -101,10 +101,10 @@ function addUser()
 function addContact()
 {
 	// Take in contact's info
-	var contact_first_name = document.getElementById("new_contact_first_name").value;
-	var contact_last_name = document.getElementById("new_contact_last_name").value;
-	var contact_email = document.getElementById("new_contact_email").value;
-	var contact_phone = document.getElementById("new_contact_phone").value;
+	var contact_first_name = document.getElementById("add_firstname_textbox").value;
+	var contact_last_name = document.getElementById("add_lastname_textbox").value;
+	var contact_email = document.getElementById("add_phone_textbox").value;
+	var contact_phone = document.getElementById("add_email_textbox").value;
 
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";

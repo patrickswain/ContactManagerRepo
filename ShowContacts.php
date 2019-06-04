@@ -31,7 +31,7 @@
     }
 		else
 		{
-      $error = "No records found"
+      $error = "No records found";
 			returnWithError( $error );
 		}
 		$conn->close();

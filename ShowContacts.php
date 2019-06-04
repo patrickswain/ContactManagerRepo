@@ -8,7 +8,7 @@
   $phoneNumber = "";
   $email = "";
   $address = "";
-  $contacts = [];
+  $contacts = array();
 
 
   $conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
@@ -43,7 +43,7 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo json_encode($obj);
+		echo $obj;
 	}
 
 	function returnWithError( $err )
@@ -55,7 +55,7 @@
 	function     returnWithInfo($contacts)
 	{
     //$retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
-	  sendResultInfoAsJson( $contacts ) ;
+	  sendResultInfoAsJson( json_encode($contacts) );
 	}
 
 ?>

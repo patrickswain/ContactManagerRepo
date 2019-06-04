@@ -111,9 +111,6 @@ function addContact()
 	document.getElementById("contact_added_result").innerHTML = "";
 
 	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
-	//var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
-	//previous string
-	//var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address '"}';
 
 	// Connect to API
 	var url = "/API/AddContact.php";
@@ -140,10 +137,6 @@ function addContact()
 
 }
 
-function deleteContact()
-{
-
-}
 
 // Display current contact info in popupwindow
 // function editContactWindow()
@@ -225,35 +218,30 @@ function deleteContact()
 //
 //
 // credit to Professor Rick Leinecker for this function
-function hideOrShow( elementId, showState )
-{
-	var vis = "visible";
-	var dis = "block";
-	if( !showState )
-	{
-		vis = "hidden";
-		dis = "none";
-	}
-
-	document.getElementById( elementId ).style.visibility = vis;
-	document.getElementById( elementId ).style.display = dis;
-}
-
-function modalWindow()
-{
-	var modal = document.getElementById("create_user_modal");
-	var add_user_button = document.getElementById("add_user");
-
-	add_user_button.onclick = function() {
-		modal.style.display = "block";
-	}
-
-	window.onclick = function() {
-		modal.style.display = "none";
-	}
-}
-//
-// function hashPassword(password)
+// function hideOrShow( elementId, showState )
 // {
+// 	var vis = "visible";
+// 	var dis = "block";
+// 	if( !showState )
+// 	{
+// 		vis = "hidden";
+// 		dis = "none";
+// 	}
 //
+// 	document.getElementById( elementId ).style.visibility = vis;
+// 	document.getElementById( elementId ).style.display = dis;
+// }
+//
+// function modalWindow()
+// {
+// 	var modal = document.getElementById("create_user_modal");
+// 	var add_user_button = document.getElementById("add_user");
+//
+// 	add_user_button.onclick = function() {
+// 		modal.style.display = "block";
+// 	}
+//
+// 	window.onclick = function() {
+// 		modal.style.display = "none";
+// 	}
 // }

@@ -4,6 +4,7 @@
 
 	$searchResults = "";
 	$searchCount = 0;
+	$error = "";
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -13,28 +14,23 @@
 	else
 	{
     $sql = "SELECT * FROM ContactInfo WHERE CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%'")"";
-		$sql = "select * from ContactInfo where FirstName like '%" . $inData["search"] . "%'";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
+		$result = mysqli_query($conn, $sql);
+    $contacts = array();
+		if (mysqli_num_rows($result) > 0)
 		{
-			while($row = $result->fetch_assoc())
-			{
-				if( $searchCount > 0 )
-				{
-					$searchResults .= ",";
-				}
-				$searchCount++;
-				$searchResults .= '"'. $row["Firstname"]. " " . $row["lastname"]. "<br>"'"';
-			}
-		}
+      while($row = mysqli_fetch_assoc($result))
+      {
+        $contacts[] = $row;
+      }
+      returnWithInfo($contacts);
+    }
 		else
 		{
-			returnWithError( "No Records Found" );
+      $error = "No records found";
+			returnWithError( $error );
 		}
 		$conn->close();
 	}
-
-	returnWithInfo( $searchResults );
 
 	function getRequestInfo()
 	{
@@ -49,14 +45,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		sendResultInfoAsJson( json_encode($err) );
 	}
 
-	function returnWithInfo( $searchResults )
+	function     returnWithInfo($contacts)
 	{
-		$retValue = '{"results":[' . $searchResults . ']}';
-		sendResultInfoAsJson( $retValue );
+    //$retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
+	  sendResultInfoAsJson( json_encode($contacts) );
 	}
 
 ?>

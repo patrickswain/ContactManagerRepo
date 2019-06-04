@@ -13,7 +13,7 @@
 	}
 	else
 	{
-    $sql = "SELECT * FROM ContactInfo WHERE CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%'")"";
+    $sql = "SELECT * FROM ContactInfo WHERE CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%'";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();
 		if (mysqli_num_rows($result) > 0)
@@ -50,7 +50,6 @@
 
 	function     returnWithInfo($contacts)
 	{
-    //$retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
 	  sendResultInfoAsJson( json_encode($contacts) );
 	}
 

@@ -8,7 +8,7 @@
   $phoneNumber = "";
   $email = "";
   $address = "";
-  $contacts = array();
+
 
 
   $conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
@@ -19,12 +19,15 @@
 	else
 	{
 		$sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["User_Id"] . "'";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
+		$result = mysqli_query($conn, $sql);
+    $contacts = array();
+		if (mysqli_num_rows($result) > 0)
 		{
-      while($row = $result->fetch_assoc();)
+      while($row = mysqli_fetch_assoc($result))
+      {
         $contacts[] = $row;
-		}
+      }
+    }
 		else
 		{
 			returnWithError( "No Records Found" );

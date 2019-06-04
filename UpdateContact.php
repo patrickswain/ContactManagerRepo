@@ -18,7 +18,7 @@
 	else
 	{
     $sql = "UPDATE ContactInfo SET FirstName='" . $firstName . "', LastName='" . $lastName . "', PhoneNumber='" . $phoneNumber . "', Email='" . $email . "', Address='" . $address . "' WHERE Contact_ID='" . $inData["id"] . "'";
-		$sql = "INSERT INTO `ContactInfo` (`FirstName`, `LastName`, `User_ID`, `PhoneNumber`, `Email`, `Address` ) VALUES ('" . $firstName . "','" . $lastName . "','" . $userID. "','" . $phoneNumber . "','" . $email . "','" . $address . "')";
+		//$sql = "INSERT INTO `ContactInfo` (`FirstName`, `LastName`, `User_ID`, `PhoneNumber`, `Email`, `Address` ) VALUES ('" . $firstName . "','" . $lastName . "','" . $userID. "','" . $phoneNumber . "','" . $email . "','" . $address . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );

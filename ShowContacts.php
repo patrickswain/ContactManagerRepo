@@ -18,7 +18,7 @@
 	}
 	else
 	{
-		$sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["User_Id"] . "'";
+		$sql = "SELECT * FROM ContactInfo where User_ID='" . $inData["User_Id"] . "'";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();
 		if (mysqli_num_rows($result) > 0)

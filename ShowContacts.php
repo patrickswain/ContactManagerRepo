@@ -24,7 +24,6 @@
 		{
       while($row = $result->fetch_assoc();)
         $contacts[] = $row;
-
 		}
 		else
 		{
@@ -44,7 +43,7 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo $obj;
+		echo json_encode($obj);
 	}
 
 	function returnWithError( $err )
@@ -56,7 +55,7 @@
 	function     returnWithInfo($contacts)
 	{
     //$retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
-	  sendResultInfoAsJson( json_encode($contacts) );
+	  sendResultInfoAsJson( $contacts ) ;
 	}
 
 ?>

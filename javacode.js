@@ -152,7 +152,7 @@ function addContact()
 
 function displayAllContacts()
 {
-	var jsonText = '{"userId" : ' + USER_ID + '}';
+	var jsonText = '{"userId" : "' + USER_ID + '"}';
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);

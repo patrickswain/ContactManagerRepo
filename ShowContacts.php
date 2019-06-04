@@ -8,7 +8,7 @@
   $phoneNumber = "";
   $email = "";
   $address = "";
-
+  $error = "";
 
 
   $conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
@@ -31,7 +31,8 @@
     }
 		else
 		{
-			returnWithError( "No Records Found" );
+      $errror = "No records found"
+			returnWithError( $error );
 		}
 		$conn->close();
 
@@ -52,7 +53,7 @@
 
 	function returnWithError( $err )
 	{
-		sendResultInfoAsJson( $err );
+		sendResultInfoAsJson( json_encode($err) );
 	}
 
 	function     returnWithInfo($contacts)

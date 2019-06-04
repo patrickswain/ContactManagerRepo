@@ -1,6 +1,6 @@
-var USER_ID = "0";
-var firstName = "";
-var lastName = "";
+//var USER_ID = "0";
+//var firstName = "";
+//var lastName = "";
 
 // function login()
 // {
@@ -301,12 +301,7 @@ function editContact ()
 	var edited_address = document.getElementById("edited_address_textbox").value;
 	var contact_id = document.getElementById("contact_id").value;
 
-	var jsonText = '{"FirstName" : "' + edited_first_name + '",
-			              "LastName" : "' + edited_last_name + '",
-										"Contact_ID"  : "' + contact_id + '",
-										"PhoneNumber" : "' + edited_phone + '",
-										"Email" : "' + edited_email + '",
-										"Address" : "' + edited_address +  '}';
+	var jsonText = '{"FirstName" : "' + edited_first_name + '","LastName" : "' + edited_last_name + '","Contact_ID"  : "' + contact_id + '","PhoneNumber" : "' + edited_phone + '","Email" : "' + edited_email + '","Address" : "' + edited_address +  '"}';
 
 	// Connect to API
 	var xmlhr = new XMLHttpRequest();

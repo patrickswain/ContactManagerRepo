@@ -13,7 +13,7 @@
 	}
 	else
 	{
-    $sql = "SELECT * FROM ContactInfo WHERE CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%'";
+    $sql = "SELECT * FROM ContactInfo WHERE (CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%') AND User_ID ='" .$inData["User"]. "'";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();
 		if (mysqli_num_rows($result) > 0)

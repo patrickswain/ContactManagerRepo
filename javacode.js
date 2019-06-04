@@ -2,109 +2,9 @@
 //var firstName = "";
 //var lastName = "";
 
-// function login()
-// {
-//   // retrieve textbox information
-// 	var loginUsername = document.getElementById("username_textbox").value;
-//   var loginPassword = document.getElementByID("password_textbox").value;
-//
-//   document.getElementByID("login_result").value = "test-test-test";
-//
-//   // turn json object to string
-//   var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
-//
-//   // setting up xhr object to connect to server
-// 	var url = "contactmngr.com/API/Login.php";
-//   var xhr = new XMLHttpRequest();
-// 	xhr.open("POST", url, false);
-// 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//
-//   try
-// 	{
-// 		xhr.send(jsonLoginString);
-//
-//     // turn string back to jsonObject
-// 		var jsonObject = JSON.parse( xhr.responseText );
-//
-//     // get user id from the updated jsonObject
-// 		USER_ID = jsonObject.id;
-//
-//     // if id is less than 1 that means the combination is not in our server.
-// 		if( USER_ID < 1 )
-// 		{
-// 			document.getElementById("login_result").innerHTML = "Username or Password is incorrect";
-// 			return;
-// 		}
-//
-//     // retrieve first name and last name from the updated jsonObject
-// 		firstName = jsonObject.firstName;
-// 		lastName = jsonObject.lastName;
-//
-// 		document.getElementById("username_textbox").value = "";
-// 		document.getElementById("password_textbox").value = "";
-// 		document.getElementById("login_result").innerHTML = "logged in";
-// 		//hideOrShow( "contactsPage", true);
-// 		//hideOrShow( "accessUIDiv", true);
-// 		//hideOrShow( "loginPage", false);
-// 	}
-// 	catch(err)
-// 	{
-// 		document.getElementById("login_result").innerHTML = err.message;
-// 	}
-// }
-//
-// function logout()
-// {
-// 	USER_ID = 0;
-// 	firstName = "";
-// 	lastName = "";
-//
-// 	hideOrShow( "loggedInDiv", false);
-// 	hideOrShow( "accessUIDiv", false);
-// 	hideOrShow( "loginDiv", true);
-// }
-//
-// function addUser()
-// {
-// 	// Take in new user info
-// 	var username = document.getElementById("new_user_name").value;
-// 	var password = document.getElementById("new_password").value;
-// 	var user_first_name = document.getElementById("new_user_first_name").value;
-// 	var user_last_name = document.getElementById("new_user_last_name").value;
-// 		// Don't need date created or User Id - those are done in application
-//
-// 	//USER_ID = Set user id from given id from api
-//
-// 	// Set result indicator to blank
-// 	document.getElementById("user_added_result").innerHTML = "";
-//
-// 	var jsonText = '{"Username" : "' + username + '",
-// 									 "Password" : "' + password + '",
-// 								   "FirstName" : "' + user_first_name + '",
-// 								   "LastName" : "' + user_last_name + '"}';
-//
-// 	// Connect to API
-// 	var url = "contactmngr.com/API/CreateUser.php";
-// 	var xmlhr = new XMLHttpRequest();
-// 	xmlhr.open("POST", url, true);
-// 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-//
-// 	try {
-// 		xmlhr.send(jsonText);
-// 		// update user id
-// 		xmlhr.onreadystatechange =function(){
-// 			if (this.readyState == 4 && this.status == 200)
-// 			{
-// 				// Update HTML
-// 				document.getElementById("user_added_result").innerHTML = "Contact Added";
-// 			}
-// 		};
-// 	} catch (e) {
-// 		document.getElementById("user_added_result").innerHTML = e.message;
-// 	}
-//
-//
-// }
+
+
+
 //
 // function addContact()
 // {
@@ -212,7 +112,7 @@ function displayAllContacts()
 					divElement.appendChild(btn2);
 
 					// add this entire created contact div to the div on the homepage.
-          homepageDiv.appendChild(divElement);
+          contactDisplay.appendChild(divElement);
         }
 
 			}

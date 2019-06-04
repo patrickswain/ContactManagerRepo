@@ -47,7 +47,7 @@
         <!--
           Create Account popup modal
         -->
-        <div id = "create_user_modal" class = "modal">
+        <div id = "create_user_modal">
           <h1>Create New User</h1>
           <form>
             <label>First Name</label><br>
@@ -87,7 +87,7 @@
           <button onclick = "addContact()">Add Contact</button>
           <button onclick = "logout()">Logout</button>
         </div>
-        <div id = "contactDisplay">
+        <div id = "contactDisplay" onload = "displayAllContacts();">
           <label>contacts shown here</label>
         </div>
         <div id = "editContactPage">

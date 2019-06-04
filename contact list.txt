@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Directory Log In</title>
+		<style>
+			body{font family: Ariel, Times New Roman, sans-serif;}
+			
+			/* input fields */
+			input[type=text], input[type-password]
+			{
+				width: 100%;
+				padding: 12px 20px;
+				margin: 8px 0;
+				display: inline-block;
+				border: 1px solid #ccc;
+				box-sizing: border-box;
+			}
+			
+			/* button styling */
+			button
+			{
+				background-color: #4CAF50;
+				color: white;
+				padding: 14px 20px;
+				margin: 8px 0;
+				border: none;
+				cursor: pointer;
+				width: 100%;
+			}
+			
+			button:hover 
+			{
+				opacity: 0.8;
+			}
+
+			/* Extra styles for the cancel button */
+			.cancelbtn 
+			{
+				width: auto;
+				padding: 10px 18px;
+				background-color: #f44336;
+			}
+
+			/* Center the image and position the close button */
+			.imgcontainer
+			{
+				text-align: center;
+				margin: 24px 0 12px 0;
+				position: relative;
+			}
+			
+			.container 
+			{
+				padding: 10px;
+			}
+
+			span.logHyperlink 
+			{
+				float: right;
+				padding-top: 16px;
+				padding-right: 8px;
+			}
+
+			/* The Directory Log In (dlogin) pre-login button (background) */
+			.dLogin 
+			{
+				display: none; 						/* Hidden by default */
+				position: fixed; 					/* Stay in place */
+				z-index: 1;							/* Sit on top */
+				left: 0;
+				top: 0;
+				width: 100%;						/* Full width */
+				height: 100%; 						/* Full height */
+				overflow: auto; 					/* Enable scroll if needed */
+				background-color: rgb(0,0,0); 		/* Fallback color */
+				background-color: rgba(0,0,0,0.4); 	/* Black w/ opacity */
+				padding-top: 60px;
+			}
+
+			/* dLogin Content/Box */
+			.dLogin-content
+			{
+				background-color: #fefefe;
+				margin: 11% auto 15% auto; 			/* 11% from the top, 15% from the bottom and centered */
+				border: 3px solid #135;
+				width: 25%; 						/* adjust this to change to size of text box that pops up */
+			}
+
+			/* The Close Button (x) */
+			.close 
+			{
+				position: absolute;
+				right: 15px;
+				top: -20px;
+				color: #000;
+				font-size: 35px;
+				font-weight: bold;
+			}
+
+			.close:hover,
+			.close:focus 
+			{
+				color: red;
+				cursor: pointer;
+			}
+
+			/* Add Zoom Animation */
+			.animate 
+			{
+				-webkit-animation: animatezoom 0.8s;
+				animation: animatezoom 0.8s
+			}
+
+			@-webkit-keyframes animatezoom 
+			{
+				from {-webkit-transform: scale(0)} 
+				to {-webkit-transform: scale(1)}
+			}
+
+			@keyframes animatezoom
+			{
+				from {transform: scale(0)} 
+				to {transform: scale(1)}
+			}
+
+			/* Change styles for span and cancel button on extra small screens */
+			@media screen and (max-width: 300px) 
+			{
+				span.psw 
+				{
+					display: block;
+					float: none;
+				}
+				.cancelbtn 
+				{
+					width: 100%;
+				}
+			}
+			
+		</style>
+    </head>
+
+    <body>
+		<h1> Directory Log In</h1>
+		<button onclick = "document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+		
+		<h1> Sign up </h1> 
+		<button onclick = "document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
+		
+		
+		<div id="id01" class="dLogin">
+			<form  class="dLogin-content animate" action="mysuperscript.php" autocomplete="off"> 
+				<p>
+					<div class="imgcontainer">
+						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close dLogin">&times;</span>
+					</div>
+				
+					<div class="container">
+						<input placeholder="Username" id="Username" required><br>
+						<input placeholder="Password" id="Password" required><br>
+						<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+						<label for="loginkeeping">Keep me logged in</label><br>
+						<button onclick = "login()" >Login </button>
+					</div>
+						
+					<div class="container" style="background-color:#f1f1f1">
+						<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+						<span class="logHyperlink">Not a member? <a href="#">Sign Up</a></span>
+					</div>
+				</p>
+			</form>
+		</div>
+        
+        <div id="contacts"></div>
+		
+		
+		<div id="id02" class="dLogin">
+			<form  class="dLogin-content animate" action="mysuperscript.php" autocomplete="off"> 
+				<p>
+					<div class="imgcontainer">
+						<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close dLogin">&times;</span>
+					</div>
+				
+					<div class="container">
+						<input placeholder="New Username" id="Username" required type="username"><br>
+						<input placeholder="New Password" id="Password" name="passwordsignup" required type="password"><br>
+						<input placeholder="Re-enter New Password" id="Password_confirm" name="passwordsignup_confirm" required type="password"><br>
+					</div>
+					
+					<p class="signin button"> 
+						<button onclick = "login()" >Register </button> 
+					</p>
+					
+					<div class="container" style="background-color:#f1f1f1">
+						<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+						<span class="logHyperlink">Already a member? <a href="#">Log in</a></span>
+					</div>
+				</p>
+			</form>
+		</div>
+		
+        <div class="contact-list">
+      <ul class="list-group">
+        <li repeat.for="contact of contacts" class="list-group-item ${contact.id === $parent.selectedId ? 'active' : ''}">
+          <a route-href="route: contacts; params.bind: {id:contact.id}" click.delegate="$parent.select(contact)">
+            <h4>${contact.firstName} ${contact.lastName}</h4>
+            <p>${contact.email}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+        <script>
+            var contacts=[];
+            
+            function add(){
+                var Username= document.getElementById("Username or email").value;
+                var Password= document.getElementById("Password").value;
+                var newContact= {
+                    newUsername: Username,
+                    newPassword: Password
+                    }
+                    contacts.push(newContact);
+                    
+                    updateDiv();
+                    
+                    document.getElementById("Username").value="";
+                    document.getElementById("Password").value="";
+                    
+            }
+            
+            function updateDiv(){
+                    var tempContent="";
+                    for(var i = 0, i < contacts.length; i++)
+					{ 
+                            
+                        tempContent += "<p>Name : " + contacts[i].newName+
+            "<br>Password:" + contacts[i].newPassword + "<br><span onclick='del("+ i +")'>[del]</span></p>";
+                    }
+                        
+                    document.getElementById("contacts").innerHTML= tempContent;
+                }
+                function del(i){
+                    contacts.splice(i,1);
+                }
+                
+            </script>
+        </body>
+    </html>
+                

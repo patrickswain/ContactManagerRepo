@@ -43,6 +43,7 @@ function login()
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";
+		displayAllContacts();
 		//hideOrShow( "contactsPage", true);
 		//hideOrShow( "accessUIDiv", true);
 		//hideOrShow( "loginPage", false);

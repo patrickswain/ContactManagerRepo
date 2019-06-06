@@ -1,6 +1,5 @@
 <?php
 
-	// Start the session
 	session_start();
 
 	$inData = getRequestInfo();
@@ -25,7 +24,7 @@
 			$firstName = $row["FirstName"];
 			$lastName = $row["LastName"];
 			$id = $row["ID"];
-			// Set session variables
+
 			$_SESSION['User_ID'] = $id;
 
 			returnWithInfo($firstName, $lastName, $id );

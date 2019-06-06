@@ -1,8 +1,10 @@
 <?php
+  // Start the session
+  session_start();
 
   $inData = getRequestInfo();
 
-  $userID= 0;
+  $userID= "_SESSION['User_ID']";
   $firstName = "";
   $lastName = "";
   $phoneNumber = "";
@@ -18,7 +20,7 @@
 	}
 	else
 	{
-		$sql = "SELECT * FROM ContactInfo where User_ID='" . $inData["User_Id"] . "'";
+		$sql = "SELECT * FROM ContactInfo where User_ID= $userID";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();
 		if (mysqli_num_rows($result) > 0)
@@ -35,8 +37,6 @@
 			returnWithError( $error );
 		}
 		$conn->close();
-
-
 	}
 
 
@@ -58,7 +58,6 @@
 
 	function     returnWithInfo($contacts)
 	{
-    //$retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
 	  sendResultInfoAsJson( json_encode($contacts) );
 	}
 

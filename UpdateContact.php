@@ -1,8 +1,10 @@
 <?php
+	// Start the session
+	session_start();
 
 	$inData = getRequestInfo();
 
-	$userID= $inData["User_ID"];
+	$userID= "_SESSION['User_ID']";
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
 	$phoneNumber = $inData["PhoneNumber"];
@@ -18,7 +20,6 @@
 	else
 	{
     $sql = "UPDATE ContactInfo SET FirstName='" . $firstName . "', LastName='" . $lastName . "', PhoneNumber='" . $phoneNumber . "', Email='" . $email . "', Address='" . $address . "' WHERE Contact_ID='" . $inData["id"] . "'";
-		//$sql = "INSERT INTO `ContactInfo` (`FirstName`, `LastName`, `User_ID`, `PhoneNumber`, `Email`, `Address` ) VALUES ('" . $firstName . "','" . $lastName . "','" . $userID. "','" . $phoneNumber . "','" . $email . "','" . $address . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );

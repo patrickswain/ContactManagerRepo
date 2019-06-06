@@ -1,4 +1,6 @@
 <?php
+	// Start the session
+	session_start();
 
 	$inData = getRequestInfo();
 
@@ -7,6 +9,7 @@
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
 	$id = 0;
+	$error = "";
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -17,9 +20,10 @@
 	{
 		$sql = "SELECT * FROM ContactInfo WHERE UserName='$userName'";
 		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
+		if (mysqli_num_rows($result) > 0)
 		{
-			returnWithError("User Name already exists");
+			$error = "User Name already exists";
+			returnWithError($error);
 		}
 
 		$sql = "INSERT INTO `Login` (`UserName`, `Password`, `FirstName`, `LastName`) VALUES ('" . $userName . "','" . $password . "','" . $firstName . "','" . $lastName . "')";
@@ -34,6 +38,7 @@
 		{
 			$row = $result->fetch_assoc();
 			$id = $row["ID"];
+			$_SESSION['User_ID'] = $id;
 
 			returnWithInfo( $id );
 		}
@@ -55,8 +60,7 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		sendResultInfoAsJson( json_encode($err)  );
 	}
 
 	function returnWithInfo( $id )

@@ -1,10 +1,13 @@
 <?php
+	// Start the session
+	session_start();
 
 	$inData = getRequestInfo();
 
 	$id = 0;
 	$firstName = "";
 	$lastName = "";
+	$error = "";
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -21,15 +24,15 @@
 			$firstName = $row["FirstName"];
 			$lastName = $row["LastName"];
 			$id = $row["ID"];
+			// Set session variables
+			$_SESSION['User_ID'] = $id;
 
 			returnWithInfo($firstName, $lastName, $id );
 		}
 		else
 		{
-			//returnWithError( "No Records Found" );
-			$firstName = "";
-			$lastName = "";
-			returnWithInfo($firstName, $lastName, $id );
+			$error = "Invalid Username or Password";
+			returnWithError( $error );
 		}
 		$conn->close();
 	}
@@ -47,8 +50,7 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		sendResultInfoAsJson( json_encode($err) );
 	}
 
 	function returnWithInfo( $firstName, $lastName, $id )

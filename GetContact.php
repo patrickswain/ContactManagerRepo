@@ -1,4 +1,6 @@
 <?php
+  // Start the session
+  session_start();
 
   $inData = getRequestInfo();
 
@@ -8,7 +10,7 @@
   $phoneNumber = "";
   $email = "";
   $address = "";
-
+  $error = "";
 
   $conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -19,20 +21,15 @@
 	{
 		$sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["id"] . "'";
 		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
+    if (mysqli_num_rows($result) > 0)
 		{
-      $row = $result->fetch_assoc();
-      $firstName = $row["FirstName"];
-      $lastName = $row["LastName"];
-      $userID = $row["User_ID"];
-      $phoneNumber = $row["PhoneNumber"];
-      $email = $row["Email"];
-      $address = $row["Address"];
-
+      $row = mysqli_fetch_assoc($result)
+      returnWithInfo($row);
 		}
-		else
+    else
 		{
-			returnWithError( "No Records Found" );
+      $error = "No records found";
+			returnWithError( $error );
 		}
 		$conn->close();
 
@@ -51,16 +48,14 @@
 		echo $obj;
 	}
 
-	function returnWithError( $err )
+  function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		sendResultInfoAsJson( json_encode($err) );
 	}
 
-	function     returnWithInfo($firstName, $lastName, $userID, $phoneNumber, $email, $address)
+	function     returnWithInfo($contact)
 	{
-    $retValue = '{"ID":' . $userID . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '", "Phone":"' . $phoneNumber . '", "Email":"' . $email . '", "address":"' . $address . '" }';
-	  sendResultInfoAsJson( $retValue );
+	  sendResultInfoAsJson( json_encode($contact) );
 	}
 
 ?>

@@ -4,6 +4,7 @@ var lastName = "";
 
 function login()
 {
+	var newurl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
   var loginPassword = document.getElementById("password_textbox").value;
@@ -43,6 +44,9 @@ function login()
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";
+
+		document.location.href = newUrl;
+
 		displayAllContacts();
 		//hideOrShow( "contactsPage", true);
 		//hideOrShow( "accessUIDiv", true);

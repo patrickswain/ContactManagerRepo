@@ -9,74 +9,7 @@
           <title>CONTACT MNGR</title>
     </head>
     <body>
-    <!--
-      Login page
-        -includes login prompts
-        -inludes create new user prompts
-      -->
-			<div id = "loginPage">
-				<h1> Contact MNGR Log In</h1>
-        <form>
-          <label>Username</label><br>
-          <input type = "text"
-                 id = "username_textbox"
-                 placeholder="Enter Username"/><br>
-          <label>Password</label><br>
-          <input type = "text"
-                 id = "password_textbox"
-                 placeholder="Enter Password" /><br>
-          <p id = "login_result">temporary text</p>
-
-          <button onclick = "alert('hello')" >Alert </button>
-          <button onclick = "login()" >Login </button>
-          <button id = "add_user">Create New Account</button>
-          <!-- script to make modal appear-->
-          <script>
-            var modal = document.getElementById("create_user_modal");
-          	var add_user_button = document.getElementById("add_user");
-
-          	add_user_button.onclick = function() {
-          		modal.style.display = "block";
-          	}
-
-          	//window.onclick = function() {
-          	//	modal.style.display = "none";
-          	//}
-            </script>
-        </form>
-        <!--
-          Create Account popup modal
-        -->
-        <div id = "create_user_modal">
-          <h1>Create New User</h1>
-          <form>
-            <label>First Name</label><br>
-            <input type = "text"
-                   id = "new_user_first_name"
-                   placeholder="Enter First Name" /><br>
-            <label>Last Name</label><br>
-            <input type = "text"
-                   id = "new_user_last_name"
-                   placeholder="Enter Last Name" /><br>
-            <label>New Username</label><br>
-            <input type = "text"
-                   id = "new_user_name"
-                   placeholder="Enter Username"/><br>
-            <label>New Password</label><br>
-            <input type = "text"
-                   id = "new_password"
-                   placeholder="Enter Password" /><br>
-            <p id = "user_added_result">temporary text</p>
-
-            <button onclick = "addUser()" >Create User</button>
-
-      </div>
-      <!--
-        Contacts page
-          -includes search bar
-          -inludes create new user prompts
-        -->
-     <!--  <div id = "contactsPage">
+			<div id = "contactsPage">
         <div id = "topOfPage">
           <h1> Contact MNGR</h1>
           <p> Welcome insertfirstname insertlastname </p>
@@ -142,7 +75,7 @@
           <button onclick = "">Cancel</button>
           <label id = "contact_added_result">Contact added result</label>
         </div>
-      </div> -->
+      </div>
 
 
  		</body>

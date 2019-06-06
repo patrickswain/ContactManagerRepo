@@ -1,4 +1,5 @@
 <?php
+
 	session_start();
 
 	$inData = getRequestInfo();

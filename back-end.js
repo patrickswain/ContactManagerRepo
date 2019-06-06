@@ -241,7 +241,7 @@ function displayAllContacts()
           var deleteButtonTextNode = document.createTextNode("Delete");
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID
-          btn2.addEventListener("click", deleteContact(rowID);
+          btn2.addEventListener("click", deleteContact(rowID));
           cell6.appendChild(btn2);
 
         }

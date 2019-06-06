@@ -19,7 +19,7 @@
 	else
 	{
 		$sql = "SELECT * FROM ContactInfo WHERE UserName='$userName'";
-		$result = $conn->query($sql);
+		$result = mysqli_query($conn, $sql);
 		if (mysqli_num_rows($result) > 0)
 		{
 			$error = "User Name already exists";

@@ -20,10 +20,9 @@
 	else
 	{
 		$sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["id"] . "'";
-		$result = $conn->query($sql);
     if (mysqli_num_rows($result) > 0)
 		{
-      $row = mysqli_fetch_assoc($result)
+      $row = mysqli_fetch_assoc($result);
       returnWithInfo($row);
 		}
     else
@@ -32,8 +31,6 @@
 			returnWithError( $error );
 		}
 		$conn->close();
-
-    returnWithInfo($firstName, $lastName, $userID, $phoneNumber, $email, $address);
 	}
 
 

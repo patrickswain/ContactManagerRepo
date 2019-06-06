@@ -45,9 +45,9 @@ function login()
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";
 
-		document.location.href = newUrl;
+		window.location.pathname = "/loggedInPage";
 
-		displayAllContacts();
+		//displayAllContacts();
 		//hideOrShow( "contactsPage", true);
 		//hideOrShow( "accessUIDiv", true);
 		//hideOrShow( "loginPage", false);

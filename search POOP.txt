@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+	  <meta charset="utf-8">
+	  <link rel="stylesheet" href="style.css">
+	  <script defer src="https://kit.fontawesome.com/42162c53d9.js"></script>
+	  <title>Awesome Search Box </title>
+	</head>
+	<body>
+
+<div class="search-box">
+	<input class="search-txt" type="text" name= "" placeholder="Type to search">
+	<a class= "search-btn" href="#">
+      <i class="fas fa-search"></i>
+	</a>
+      </div>
+
+
+body{
+   margin: 0;
+   padding: 0;
+   background: #273c75;
+    }
+.search-box{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: #7f8fa6;
+   height: 40px;
+   border-radius: 40px;
+   padding: 10px;
+   }
+.search-box:hover> . search-txt{
+   width: 240px;
+   padding: 0 6px;
+   }
+.search-box:hover> . search-btn{
+   background: white;
+   }
+.search-btn{
+   color: #273c75
+   float: right;
+   width: 40px;
+   height: 40px;
+   border-radius:50%;
+   backgroud: #7f8fa6
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: 0.4s;
+}
+.search-txt{
+   border:none;
+   background: none;
+   outline: none;
+   float: left;
+   padding:0;
+   color: white;
+   font-size: 16px;
+   transition: 0.4s;
+   line-height: 40px;
+   width: 0px;
+}
+
+
+   
+   
+

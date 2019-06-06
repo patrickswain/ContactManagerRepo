@@ -142,6 +142,152 @@ function addContact()
 
 }
 
+function displayAllContacts()
+{
+	var jsonText = '{"userId" : ' + USER_ID + '}';
+
+  var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+  try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				// i should receive back an array of objects with firstname, lastname
+				// phone # and email and contact id
+        var jsonObject = JSON.parse( xhr.responseText );
+
+        var i;
+				// gets the div id of the spot on the homepage where displayAllContacts will go.
+        var homepageDiv = document.getElementByID("div#");
+
+        // create table and header elements with class for light design.
+        var table1 = document.createElement("table");
+        table1.setAttribute("class","table");
+        var header = table1.createTHead();
+        header.setAttribute("class","thead-light");
+
+        // create row for header names
+        var headRow = table1.insertRow(0);
+
+        // add firstname header
+        var headCell1 = document.createElement("th");
+        headCell1.setAttribute("scope", col);
+        headCell1Text = document.createTextNode("First Name");
+        headCell1.appendChild(headCell1Text);
+        headRow.appendChild(headCell1);
+
+        var headCell2 = document.createElement("th");
+        headCell2.setAttribute("scope", col);
+        headCell2Text = document.createTextNode("Last Name");
+        headCell2.appendChild(headCell2Text);
+        headRow.appendChild(headCell2);
+
+        var headCell3 = document.createElement("th");
+        headCell3.setAttribute("scope", col);
+        headCell3Text = document.createTextNode("Phone Number");
+        headCell3.appendChild(headCell3Text);
+        headRow.appendChild(headCell3);
+
+        var headCell4 = document.createElement("th");
+        headCell4.setAttribute("scope", col);
+        headCell4Text = document.createTextNode("Email");
+        headCell4.appendChild(headCell4Text);
+        headRow.appendChild(headCell4);
+
+        var body = document.createElement("tbody");
+        table1.appendChild(body);
+
+        for(i = 0; i < jsonObject.contacts.length; i++)
+        {
+          // insert a new row and set the row id with the contact id
+          var row = table1.insertRow(-1);
+          var rowID = jsonObject.contacts[i].contactID
+          row.setAttribute("id", rowID);
+
+          var cell1 = row.insertCell(0);
+          var cell1Text = document.createTextNode(jsonObject.contacts[i].firstName);
+          cell1.appendChild(cell1Text);
+
+          var cell2 = row.insertCell(1);
+          var cell2Text = document.createTextNode(jsonObject.contacts[i].lastName);
+          cell2.appendChild(cell2Text)
+
+          var cell3 = row.insertCell(2);
+          var cell3Text = document.createTextNode(jsonObject.contacts[i].phoneNumber);
+          cell3.appendChild(cell3Text)
+
+          var cell4 = row.insertCell(3)
+          var cell4Text = document.createTextNode(jsonObject.contacts[i].email);
+          cell4.appendChild(cell4Text)
+
+          var cell5 = row.insertCell(4);
+          var btn1 = document.createElement("button");
+          btn1.setAttribute("type", "button");
+          btn1.setAttribute("class", "btn btn-primary");
+          var editButtonTextNode = document.createTextNode("Edit");
+          btn1.appendChild(editButtonTextNode);
+          // calls the editContact function and passes it the contactID as the rowID
+          btn1.addEventListener("click", editContact(rowID));
+          cell5.appendChild(btn1);
+
+          var cell6 = row.insertCell(5);
+          var btn2 = document.createElement("button");
+          btn2.setAttribute("type", "button");
+          btn2.setAttribute("class", "btn btn-primary");
+          var deleteButtonTextNode = document.createTextNode("Delete");
+          btn2.appendChild(deleteButtonTextNode);
+          // calls the deleteContact function and passes it the contactID as the rowID
+          btn2.addEventListener("click", deleteContact(rowID);
+          cell6.appendChild(btn2);
+
+        }
+
+        // add the table to the div from html file
+        homepageDiv.appendChild(table1);
+
+			}
+		};
+		xhr.send(jsonText);
+	}
+	catch(err)
+	{
+		document.getElementById("displayAllContactsResults").innerHTML = err.message;
+	}
+}
+
+function deleteContact(contactID)
+{
+	// creates the json text with contact id and userid
+  var jsonText = '{"contact" : "' + contactID + '", "userId" : ' + USER_ID + '}';
+
+  var xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				// remove the row in the html for that contact
+				var row = document.getElementById("contactID");
+				row.parentNode.removeChild(row);
+			}
+		};
+		// send the user id and contact id to the api
+		xhr.send(jsonText);
+	}
+	catch(err)
+	{
+		document.getElementById("deletedContactResult").innerHTML = err.message;
+	}
+}
+
+
 
 // Display current contact info in popupwindow
 // function editContactWindow()

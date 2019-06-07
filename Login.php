@@ -31,8 +31,13 @@
 		}
 		else
 		{
-			$error = "Invalid Username or Password";
-			returnWithError( $error );
+			$firstName = "";
+			$lastName = "";
+			$id = 0;
+
+			$_SESSION['User_ID'] = $id;
+
+			returnWithInfo($firstName, $lastName, $id );
 		}
 		$conn->close();
 	}

@@ -1,4 +1,4 @@
-var USER_ID = "1";
+var USER_ID = "0";
 var firstName = "";
 var lastName = "";
 
@@ -45,7 +45,7 @@ function login()
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";
 
-		window.location.pathname = "/loggedInPage";
+		//window.location.pathname = "/loggedInPage";
 
 		//displayAllContacts();
 		//hideOrShow( "contactsPage", true);

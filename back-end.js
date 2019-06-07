@@ -45,7 +45,7 @@ function login()
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";
 
-		window.location.assign = "contactmngr.com/loggedInPage";
+		window.location.href = "loggedInPage.html";
 
 		//displayAllContacts();
 		//hideOrShow( "contactsPage", true);

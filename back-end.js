@@ -1,9 +1,10 @@
-var USER_ID = "0";
+var USER_ID = "";
 var firstName = "";
 var lastName = "";
 
 function login()
 {
+	var USER_id = "0";
 	var newUrl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;

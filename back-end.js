@@ -4,7 +4,7 @@ var lastName = "";
 
 function login()
 {
-	var USER_id = "0";
+	var USER_ID = "0";
 	var newUrl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
@@ -48,10 +48,6 @@ function login()
 
 		window.location.href = "loggedInPage.html";
 
-		//displayAllContacts();
-		//hideOrShow( "contactsPage", true);
-		//hideOrShow( "accessUIDiv", true);
-		//hideOrShow( "loginPage", false);
 	}
 	catch(err)
 	{

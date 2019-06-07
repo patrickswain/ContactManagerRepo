@@ -162,7 +162,7 @@ function displayAllContacts()
 
         var i;
 				// gets the div id of the spot on the homepage where displayAllContacts will go.
-        var homepageDiv = document.getElementByID("contactDisplay");
+        var homepageDiv = document.getElementById("contactDisplay");
 
         // create table and header elements with class for light design.
         var table1 = document.createElement("table");
@@ -175,31 +175,31 @@ function displayAllContacts()
 
         // add firstname header
         var headCell1 = document.createElement("th");
-        headCell1.setAttribute("scope", col);
+        headCell1.setAttribute("scope", "col");
         headCell1Text = document.createTextNode("First Name");
         headCell1.appendChild(headCell1Text);
         headRow.appendChild(headCell1);
 
         var headCell2 = document.createElement("th");
-        headCell2.setAttribute("scope", col);
+        headCell2.setAttribute("scope", "col");
         headCell2Text = document.createTextNode("Last Name");
         headCell2.appendChild(headCell2Text);
         headRow.appendChild(headCell2);
 
         var headCell3 = document.createElement("th");
-        headCell3.setAttribute("scope", col);
+        headCell3.setAttribute("scope", "col");
         headCell3Text = document.createTextNode("Phone Number");
         headCell3.appendChild(headCell3Text);
         headRow.appendChild(headCell3);
 
         var headCell4 = document.createElement("th");
-        headCell4.setAttribute("scope", col);
+        headCell4.setAttribute("scope", "col");
         headCell4Text = document.createTextNode("Email");
         headCell4.appendChild(headCell4Text);
         headRow.appendChild(headCell4);
 
 				var headCell5 = document.createElement("th");
-        headCell5.setAttribute("scope", col);
+        headCell5.setAttribute("scope", "col");
         headCell5Text = document.createTextNode("Address");
         headCell5.appendChild(headCell5Text);
         headRow.appendChild(headCell5);
@@ -373,36 +373,5 @@ function deleteContact(contactID)
 // 	} catch (e) {
 // 		// Update HTML
 // 		document.getElementById("contact_edited_result").innerHTML = e.message;
-// 	}
-// }
-//
-//
-//
-// credit to Professor Rick Leinecker for this function
-// function hideOrShow( elementId, showState )
-// {
-// 	var vis = "visible";
-// 	var dis = "block";
-// 	if( !showState )
-// 	{
-// 		vis = "hidden";
-// 		dis = "none";
-// 	}
-//
-// 	document.getElementById( elementId ).style.visibility = vis;
-// 	document.getElementById( elementId ).style.display = dis;
-// }
-//
-// function modalWindow()
-// {
-// 	var modal = document.getElementById("create_user_modal");
-// 	var add_user_button = document.getElementById("add_user");
-//
-// 	add_user_button.onclick = function() {
-// 		modal.style.display = "block";
-// 	}
-//
-// 	window.onclick = function() {
-// 		modal.style.display = "none";
 // 	}
 // }

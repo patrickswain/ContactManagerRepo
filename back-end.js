@@ -48,6 +48,7 @@ function login()
 
 		window.location.href = "loggedInPage.html";
 
+		displayAllContacts();
 	}
 	catch(err)
 	{
@@ -130,7 +131,8 @@ function addContact()
 				document.getElementById("contact_added_result").innerHTML = "Contact Added";
 			}
 		};
-
+		
+		displayAllContacts();
 	} catch (e) {
 		// Update HTML
 		document.getElementById("contact_added_result").innerHTML = e.message;

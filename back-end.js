@@ -198,6 +198,12 @@ function displayAllContacts()
         headCell4.appendChild(headCell4Text);
         headRow.appendChild(headCell4);
 
+				var headCell5 = document.createElement("th");
+        headCell5.setAttribute("scope", col);
+        headCell5Text = document.createTextNode("Address");
+        headCell5.appendChild(headCell5Text);
+        headRow.appendChild(headCell5);
+
         var body = document.createElement("tbody");
         table1.appendChild(body);
 
@@ -224,7 +230,11 @@ function displayAllContacts()
           var cell4Text = document.createTextNode(jsonObject.contacts[i].email);
           cell4.appendChild(cell4Text)
 
-          var cell5 = row.insertCell(4);
+					var cell5 = row.insertCell(4)
+          var cell5Text = document.createTextNode(jsonObject.contacts[i].address);
+          cell5.appendChild(cell5Text)
+
+          var cell6 = row.insertCell(5);
           var btn1 = document.createElement("button");
           btn1.setAttribute("type", "button");
           btn1.setAttribute("class", "btn btn-primary");
@@ -232,9 +242,9 @@ function displayAllContacts()
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
           btn1.addEventListener("click", editContact(rowID));
-          cell5.appendChild(btn1);
+          cell6.appendChild(btn1);
 
-          var cell6 = row.insertCell(5);
+          var cell7 = row.insertCell(6);
           var btn2 = document.createElement("button");
           btn2.setAttribute("type", "button");
           btn2.setAttribute("class", "btn btn-primary");
@@ -242,7 +252,7 @@ function displayAllContacts()
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID
           btn2.addEventListener("click", deleteContact(rowID));
-          cell6.appendChild(btn2);
+          cell7.appendChild(btn2);
 
         }
 

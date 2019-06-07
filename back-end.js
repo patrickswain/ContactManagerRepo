@@ -131,7 +131,7 @@ function addContact()
 				document.getElementById("contact_added_result").innerHTML = "Contact Added";
 			}
 		};
-		
+
 		displayAllContacts();
 	} catch (e) {
 		// Update HTML
@@ -143,6 +143,7 @@ function addContact()
 
 function displayAllContacts()
 {
+	var url = "/API/ShowContacts.php";
 	var jsonText = '{"userId" : ' + USER_ID + '}';
 
   var xhr = new XMLHttpRequest();

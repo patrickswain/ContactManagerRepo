@@ -163,7 +163,7 @@ function displayAllContacts()
 
         var i;
 				// gets the div id of the spot on the homepage where displayAllContacts will go.
-        var homepageDiv = document.getElementByID("div#");
+        var homepageDiv = document.getElementByID("contactDisplay");
 
         // create table and header elements with class for light design.
         var table1 = document.createElement("table");

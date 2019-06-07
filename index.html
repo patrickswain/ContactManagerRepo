@@ -3,7 +3,7 @@
     <head>
       <script src="back-end.js"></script>
       <script src="javacode.js"></script>
-      
+
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Directory Log In</title>
 		<style>
@@ -162,10 +162,11 @@
 				</div>
 
 				<div class="container" style="background-color:#f1f1f1">
-					<span class="logHyperlink">
+          <button onclick="document.getElementById('id02').style.display='block'">Sign up!</button>
+					<!--<span class="logHyperlink">
 						Not a member?
 						<a href="#">Sign Up</a>
-					</span>
+					</span> -->
 				</div>
 			</form>
 		</div>
@@ -173,7 +174,7 @@
 
 
 		<div id="id02" class="dLogin">
-			<form  class="dLogin-content animate" action="mysuperscript.php" autocomplete="off">
+			<form  class="dLogin-content animate" autocomplete="off">
 				<p>
 					<div class="imgcontainer">
 						<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close dLogin">&times;</span>
@@ -187,7 +188,7 @@
 					</div>
 
 					<p class="signin button">
-						<button onclick = "login()" >Register </button>
+						<button onclick = "addUser()" >Register </button>
 					</p>
 
 					<div class="container2" style="background-color:#f1f1f1">

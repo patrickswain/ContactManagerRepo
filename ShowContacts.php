@@ -4,7 +4,8 @@
 
   $inData = getRequestInfo();
 
-  $userID= "_SESSION['User_ID']";
+  //$userID= "_SESSION['User_ID']";
+  userID = $inData["userID"];
   $firstName = "";
   $lastName = "";
   $phoneNumber = "";
@@ -25,7 +26,7 @@
     $contacts = array();
 
     mysqli_num_rows($result);
-    
+
 		if (mysqli_num_rows($result) > 0)
 		{
       while($row = mysqli_fetch_assoc($result))

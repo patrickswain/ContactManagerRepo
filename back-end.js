@@ -311,7 +311,10 @@ function displayAllContacts()
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
-          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
+					btn1.setAttribute("data-toggle","modal");
+					btn1.setAttribute("data-target","#editModal");
+
+          //btn1.addEventListener("click", editContactWindow(rowID, contact_id));
           cell6.appendChild(btn1);
 
           var cell7 = row.insertCell(6);
@@ -367,6 +370,7 @@ function deleteContact(contactID)
 	// }
 }
 
+/*
 // baidong's version
 function editContactWindow(rowID, contactID)
 {
@@ -397,6 +401,7 @@ function editContactWindow(rowID, contactID)
   //modal.modal();
 	//modal.style.visibility
 }
+*/
 
 
 // Display current contact info in popupwindow

@@ -341,30 +341,30 @@ function displayAllContacts()
 
 function deleteContact(contactID)
 {
-	// creates the json text with contact id and userid
-  var jsonText = '{"contact" : "' + contactID + '", "userId" : ' + USER_ID + '}';
-
-  var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  try
-	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				// remove the row in the html for that contact
-				var row = document.getElementById("contactID");
-				row.parentNode.removeChild(row);
-			}
-		};
-		// send the user id and contact id to the api
-		xhr.send(jsonText);
-	}
-	catch(err)
-	{
-		document.getElementById("deletedContactResult").innerHTML = err.message;
-	}
+	// // creates the json text with contact id and userid
+  // var jsonText = '{"contact" : "' + contactID + '", "userId" : ' + USER_ID + '}';
+	//
+  // var xhr = new XMLHttpRequest();
+	// xhr.open("POST", url, true);
+  // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  // try
+	// {
+	// 	xhr.onreadystatechange = function()
+	// 	{
+	// 		if (this.readyState == 4 && this.status == 200)
+	// 		{
+	// 			// remove the row in the html for that contact
+	// 			var row = document.getElementById("contactID");
+	// 			row.parentNode.removeChild(row);
+	// 		}
+	// 	};
+	// 	// send the user id and contact id to the api
+	// 	xhr.send(jsonText);
+	// }
+	// catch(err)
+	// {
+	// 	document.getElementById("deletedContactResult").innerHTML = err.message;
+	// }
 }
 
 // baidong's version
@@ -372,14 +372,23 @@ function editContactWindow(contactID)
 {
   var modal = document.getElementById("editModal");
   var saveBtn = document.getElementById("saveButtonEdit");
-  saveBtn.addEventListener("click", editContact(contactID))
+  //saveBtn.addEventListener("click", editContact(contactID))
 
-  var row = document.getElementById("contactID");
-  document.getElementById("edited_first_textbox").innerHTML = row.cells[0].value;
-  document.getElementById("edited_last_textbox").innerHTML = row.cells[1].value;
-  document.getElementById("edited_phone_textbox").innerHTML = row.cells[2].value;
-  document.getElementById("edited_email_textbox").innerHTML = row.cells[3].value;
-  document.getElementById("edited_address_textbox").innerHTML = row.cells[4].value;
+  //var row = document.getElementById("contactID");
+	var table = document.getElementById("tableID");
+
+	//var row = contactID;
+  document.getElementById("edited_first_textbox").innerHTML = table.rows[contactID].cells[0].value;
+  document.getElementById("edited_last_textbox").innerHTML = table.rows[contactID].cells[1].value;
+  document.getElementById("edited_phone_textbox").innerHTML = table.rows[contactID].cells[2].value;
+  document.getElementById("edited_email_textbox").innerHTML = table.rows[contactID].cells[3].value;
+  document.getElementById("edited_address_textbox").innerHTML = table.rows[contactID].cells[4].value;
+
+	// document.getElementById("edited_first_textbox").innerHTML = row.cells[0].value;
+  // document.getElementById("edited_last_textbox").innerHTML = row.cells[1].value;
+  // document.getElementById("edited_phone_textbox").innerHTML = row.cells[2].value;
+  // document.getElementById("edited_email_textbox").innerHTML = row.cells[3].value;
+  // document.getElementById("edited_address_textbox").innerHTML = row.cells[4].value;
 
   modal.style.display = "block";
 }

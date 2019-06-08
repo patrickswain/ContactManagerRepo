@@ -195,7 +195,9 @@ function displayAllContacts()
 {
 	USER_ID = 1;
 	var url = "/API/ShowContacts.php";
-	var jsonText = '{"userId" : "' + USER_ID + '"}';
+
+	var jsonText = '{"userID" : "' + USER_ID + '"}';
+	//var jsonText = '{"User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -274,11 +276,11 @@ function displayAllContacts()
         table1.appendChild(body);
 				*/
 
-        for(i = 0; i < jsonObject.num_rows; i++)
+        for(i = 0; i < jsonObject.length; i++)
         {
           // insert a new row and set the row id with the contact id
           var row = table1.insertRow(-1);
-          var rowID = jsonObject.contacts[i].contactID
+          var rowID = jsonObject.contacts[i].contactID;
           row.setAttribute("id", rowID);
 
           var cell1 = row.insertCell(0);
@@ -287,19 +289,19 @@ function displayAllContacts()
 
           var cell2 = row.insertCell(1);
           var cell2Text = document.createTextNode(jsonObject.contacts[i].lastName);
-          cell2.appendChild(cell2Text)
+          cell2.appendChild(cell2Text);
 
           var cell3 = row.insertCell(2);
           var cell3Text = document.createTextNode(jsonObject.contacts[i].phoneNumber);
-          cell3.appendChild(cell3Text)
+          cell3.appendChild(cell3Text);
 
-          var cell4 = row.insertCell(3)
+          var cell4 = row.insertCell(3);
           var cell4Text = document.createTextNode(jsonObject.contacts[i].email);
-          cell4.appendChild(cell4Text)
+          cell4.appendChild(cell4Text);
 
-					var cell5 = row.insertCell(4)
+					var cell5 = row.insertCell(4);
           var cell5Text = document.createTextNode(jsonObject.contacts[i].address);
-          cell5.appendChild(cell5Text)
+          cell5.appendChild(cell5Text);
 
           var cell6 = row.insertCell(5);
           var btn1 = document.createElement("button");

@@ -314,7 +314,7 @@ function displayAllContacts()
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 
-          //btn1.addEventListener("click", editContactWindow(rowID, contact_id));
+          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
           cell6.appendChild(btn1);
 
           var cell7 = row.insertCell(6);
@@ -371,7 +371,7 @@ function deleteContact(contactID)
 	// }
 }
 
-/*
+
 // baidong's version
 function editContactWindow(rowID, contactID)
 {
@@ -389,7 +389,7 @@ function editContactWindow(rowID, contactID)
   document.getElementById("edited_email_textbox").innerHTML = table.rows[rowID].cells[3].value;
   document.getElementById("edited_address_textbox").innerHTML = table.rows[rowID].cells[4].value;
 
-	$("#editModal").modal("show");
+	//$("#editModal").modal("show");
 	// modal.style.visibility = "visible";
 	// modal.style.display = "block";
 
@@ -402,7 +402,7 @@ function editContactWindow(rowID, contactID)
   //modal.modal();
 	//modal.style.visibility
 }
-*/
+
 
 
 // Display current contact info in popupwindow

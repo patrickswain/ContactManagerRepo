@@ -280,8 +280,8 @@ function displayAllContacts()
         {
           // insert a new row and set the row id with the contact id
           var row = table1.insertRow(-1);
-					var rowID = jsonObject[i].Contact_ID;
-          //var rowID = jsonObject.contact[i].Contact_ID;
+					var contact_id = jsonObject[i].Contact_ID
+					var rowID = i + 1;
           row.setAttribute("id", rowID);
 
           var cell1 = row.insertCell(0);
@@ -311,7 +311,7 @@ function displayAllContacts()
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
-          btn1.addEventListener("click", editContactWindow(rowID));
+          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
           cell6.appendChild(btn1);
 
           var cell7 = row.insertCell(6);
@@ -342,7 +342,7 @@ function displayAllContacts()
 function deleteContact(contactID)
 {
 	// // creates the json text with contact id and userid
-  // var jsonText = '{"contact" : "' + contactID + '", "userId" : ' + USER_ID + '}';
+  // var jsonText = '{"contact" : "' + contactID + '", "userId" : "' + USER_ID + '"}';
 	//
   // var xhr = new XMLHttpRequest();
 	// xhr.open("POST", url, true);
@@ -368,7 +368,7 @@ function deleteContact(contactID)
 }
 
 // baidong's version
-function editContactWindow(contactID)
+function editContactWindow(rowID, contactID)
 {
   var modal = document.getElementById("editModal");
   var saveBtn = document.getElementById("saveButtonEdit");
@@ -378,11 +378,15 @@ function editContactWindow(contactID)
 	var table = document.getElementById("tableID");
 
 	//var row = contactID;
-  document.getElementById("edited_first_textbox").innerHTML = table.rows[contactID].cells[0].value;
-  document.getElementById("edited_last_textbox").innerHTML = table.rows[contactID].cells[1].value;
-  document.getElementById("edited_phone_textbox").innerHTML = table.rows[contactID].cells[2].value;
-  document.getElementById("edited_email_textbox").innerHTML = table.rows[contactID].cells[3].value;
-  document.getElementById("edited_address_textbox").innerHTML = table.rows[contactID].cells[4].value;
+  document.getElementById("edited_first_textbox").innerHTML = table.rows[rowID].cells[0].value;
+  document.getElementById("edited_last_textbox").innerHTML = table.rows[rowID].cells[1].value;
+  document.getElementById("edited_phone_textbox").innerHTML = table.rows[rowID].cells[2].value;
+  document.getElementById("edited_email_textbox").innerHTML = table.rows[rowID].cells[3].value;
+  document.getElementById("edited_address_textbox").innerHTML = table.rows[rowID].cells[4].value;
+
+	$("#editModal").modal("show");
+	// modal.style.visibility = "visible";
+	// modal.style.display = "block";
 
 	// document.getElementById("edited_first_textbox").innerHTML = row.cells[0].value;
   // document.getElementById("edited_last_textbox").innerHTML = row.cells[1].value;
@@ -390,7 +394,8 @@ function editContactWindow(contactID)
   // document.getElementById("edited_email_textbox").innerHTML = row.cells[3].value;
   // document.getElementById("edited_address_textbox").innerHTML = row.cells[4].value;
 
-  modal.style.display = "block";
+  //modal.modal();
+	//modal.style.visibility
 }
 
 

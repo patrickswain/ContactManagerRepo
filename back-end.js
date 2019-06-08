@@ -207,7 +207,7 @@ function displayAllContacts()
         var body = document.createElement("tbody");
         table1.appendChild(body);
 
-        for(i = 0; i < jsonObject.contacts.length; i++)
+        for(i = 0; i < jsonObject.num_rows; i++)
         {
           // insert a new row and set the row id with the contact id
           var row = table1.insertRow(-1);

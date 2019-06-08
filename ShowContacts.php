@@ -23,13 +23,16 @@
 		$sql = "SELECT * FROM ContactInfo where User_ID= $userID";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();
+
+    mysqli_num_rows($result);
+    
 		if (mysqli_num_rows($result) > 0)
 		{
       while($row = mysqli_fetch_assoc($result))
       {
         $contacts[] = $row;
       }
-      returnWithInfo($contacts);
+      returnWithInfo($contacts, $num_rows);
     }
 		else
 		{

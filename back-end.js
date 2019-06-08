@@ -367,6 +367,22 @@ function deleteContact(contactID)
 	}
 }
 
+// baidong's version
+function editContactWindow(contactID)
+{
+  var modal = document.getElementById("editModal");
+  var saveBtn = document.getElementById("saveButtonEdit");
+  saveBtn.addEventListener("click", editContact(contactID))
+
+  var row = document.getElementById("contactID");
+  document.getElementById("edited_first_textbox").innerHTML = row.cells[0].value;
+  document.getElementById("edited_last_textbox").innerHTML = row.cells[1].value;
+  document.getElementById("edited_phone_textbox").innerHTML = row.cells[2].value;
+  document.getElementById("edited_email_textbox").innerHTML = row.cells[3].value;
+  document.getElementById("edited_address_textbox").innerHTML = row.cells[4].value;
+
+  modal.style.display = "block";
+}
 
 
 // Display current contact info in popupwindow

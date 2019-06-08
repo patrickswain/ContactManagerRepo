@@ -23,7 +23,7 @@
                  id = "search_textbox"
                  placeholder="Search for Contacts..."/>
           <button onclick = "alert('hola')"> Search</button>
-          <button onclick = "addContact()">Add Contact</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Contact</button>
           <button onclick = "logout()">Logout</button>
         </div>
         <div id = "contactDisplay">
@@ -100,6 +100,44 @@
         </div>
       </div>
 
+      <div class = "modal fade" role = "dialog" id = "addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class = "modal-dialog" role="document">
+          <div class = "modal-content">
+            <div class = "modal-header">
+              <h3 class = "modal-title" id="exampleModalLabel">Add Contact</h3>
+              <button type = "button" class = "close" data-dismiss = "modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
+            <div class = "modal-body">
+              <div class="form-group">
+                  <label for="inputAddress">First Name</label>
+                  <input type="text" class="form-control" id="add_firstname_textbox" placeholder="">
+                </div>
+              <div class="form-group">
+                  <label for="inputAddress2">Last Name</label>
+                  <input type="text" class="form-control" id="add_lastname_textbox" placeholder="">
+              </div>
+              <div class="form-group">
+                  <label for="inputAddress2">Phone Number</label>
+                  <input type="text" class="form-control" id="add_phone_textbox" placeholder="">
+              </div>
+              <div class="form-group">
+                  <label for="inputAddress2">Email</label>
+                  <input type="text" class="form-control" id="add_email_textbox" placeholder="">
+              </div>
+              <div class="form-group">
+                  <label for="inputAddress2">Address</label>
+                  <input type="text" class="form-control" id="add_address_textbox" placeholder="">
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id = "saveButton" class="btn btn-success" data-dismiss="modal" onclick= "addContact()">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
  		</body>
 </html>

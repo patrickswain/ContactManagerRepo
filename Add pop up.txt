@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="myFunction()">Add</button>
+
+<script>
+function myFunction() {
+  var x = document.createElement("INPUT");
+  x.setAttribute("type", "text");
+  document.body.appendChild(x);
+}
+</script>
+
+</body>
+</html>
+
+

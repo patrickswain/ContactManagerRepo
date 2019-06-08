@@ -195,7 +195,7 @@ function displayAllContacts()
 {
 	USER_ID = 1;
 	var url = "/API/ShowContacts.php";
-	var jsonText = '{"userId" : ' + USER_ID + '}';
+	var jsonText = '{"userId" : "' + USER_ID + '"}';
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -203,6 +203,7 @@ function displayAllContacts()
 
   try
 	{
+		xhr.send(jsonText);
 		xhr.onreadystatechange = function()
 		{
 			if (this.readyState == 4 && this.status == 200)

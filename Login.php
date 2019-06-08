@@ -5,6 +5,7 @@
 	$inData = getRequestInfo();
 
 	$id = 0;
+	$userID = 0;
 	$firstName = "";
 	$lastName = "";
 	$error = "";
@@ -26,8 +27,9 @@
 			$id = $row["ID"];
 
 			$_SESSION['User_ID'] = $id;
+			$userID= "_SESSION['User_ID']";
 
-			returnWithInfo($firstName, $lastName, $id );
+			returnWithInfo($firstName, $lastName, $id, $userIDs);
 		}
 		else
 		{

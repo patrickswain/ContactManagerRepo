@@ -358,11 +358,11 @@ function deleteContact(contactID)
 	// 		{
 	// 			// remove the row in the html for that contact
 	// 			var row = contactID;
-	// 			var table
+	// 			var table = getElementById("tableID");
 	// 			row.parentNode.removeChild(row);
 	// 		}
 	// 	};
-	// 	// send the user id and contact id to the api
+	// 	// send the contact id to the api
 	// 	xhr.send(jsonText);
 	// }
 	// catch(err)

@@ -132,13 +132,63 @@ function addContact()
 			}
 		};
 
-		displayAllContacts();
+		addContactToDisplay();
 	} catch (e) {
 		// Update HTML
 		document.getElementById("contact_added_result").innerHTML = e.message;
 	}
+}
 
+// new function to add contact to display
+function addContactToDisplay()
+{
+	table1 = document.getElementById("tableID");
 
+	var row = table1.insertRow(-1);
+	/*
+	var rowID = jsonObject.contacts[i].contactID;
+	row.setAttribute("id", rowID);
+	*/
+
+	var cell1 = row.insertCell(0);
+	var cell1Text = document.createTextNode(document.getElementById("add_firstname_textbox").value);
+	cell1.appendChild(cell1Text);
+
+	var cell2 = row.insertCell(1);
+	var cell2Text = document.createTextNode(document.getElementById("add_lastname_textbox").value);
+	cell2.appendChild(cell2Text)
+
+	var cell3 = row.insertCell(2);
+	var cell3Text = document.createTextNode(document.getElementById("add_phone_textbox").value);
+	cell3.appendChild(cell3Text)
+
+	var cell4 = row.insertCell(3)
+	var cell4Text = document.createTextNode(document.getElementById("add_email_textbox").value);
+	cell4.appendChild(cell4Text)
+
+	var cell5 = row.insertCell(4)
+	var cell5Text = document.createTextNode(document.getElementById("add_address_textbox").value);
+	cell5.appendChild(cell5Text)
+
+	var cell6 = row.insertCell(5);
+	var btn1 = document.createElement("button");
+	btn1.setAttribute("type", "button");
+	btn1.setAttribute("class", "btn btn-primary");
+	var editButtonTextNode = document.createTextNode("Edit");
+	btn1.appendChild(editButtonTextNode);
+	// calls the editContact function and passes it the contactID as the rowID
+	//btn1.addEventListener("click", editContact(rowID));
+	cell6.appendChild(btn1);
+
+	var cell7 = row.insertCell(6);
+	var btn2 = document.createElement("button");
+	btn2.setAttribute("type", "button");
+	btn2.setAttribute("class", "btn btn-primary");
+	var deleteButtonTextNode = document.createTextNode("Delete");
+	btn2.appendChild(deleteButtonTextNode);
+	// calls the deleteContact function and passes it the contactID as the rowID
+	//btn2.addEventListener("click", deleteContact(rowID));
+	cell7.appendChild(btn2);
 }
 
 function displayAllContacts()
@@ -165,7 +215,9 @@ function displayAllContacts()
         var homepageDiv = document.getElementById("contactDisplay");
 
         // create table and header elements with class for light design.
-        var table1 = document.createElement("table");
+        var table1 = document.getElementById("tableID");
+
+				/*
         table1.setAttribute("class","table");
         var header = table1.createTHead();
         header.setAttribute("class","thead-light");
@@ -204,8 +256,21 @@ function displayAllContacts()
         headCell5.appendChild(headCell5Text);
         headRow.appendChild(headCell5);
 
+				var headCell6 = document.createElement("th");
+        headCell6.setAttribute("scope", "col");
+        headCell6Text = document.createTextNode("Edit Contact");
+        headCell6.appendChild(headCell6Text);
+        headRow.appendChild(headCell6);
+
+				var headCell7 = document.createElement("th");
+        headCell7.setAttribute("scope", "col");
+        headCell7Text = document.createTextNode("Delete Contact");
+        headCell7.appendChild(headCell7Text);
+        headRow.appendChild(headCell7);
+
         var body = document.createElement("tbody");
         table1.appendChild(body);
+				*/
 
         for(i = 0; i < jsonObject.num_rows; i++)
         {

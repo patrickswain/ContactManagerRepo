@@ -52,19 +52,14 @@
 			
 			.container 
 			{
-				padding: 40px;
-			}
-			
-			.container2
-			{
-				padding: 15px;
+				padding: 45px;
 			}
 
 			span.logHyperlink 
 			{
 				float: right;
-				padding-top: 1px;
-				padding-right: 115px;
+				padding-top: 16px;
+				padding-right: 8px;
 			}
 
 			/* The Directory Log In (dlogin) pre-login button (background) */
@@ -142,6 +137,7 @@
 					width: 100%;
 				}
 			}
+			
 		</style>
     </head>
 
@@ -160,15 +156,14 @@
 				</div>
 					
 				<div class="container" style="background-color:#f1f1f1">
-					<span class="logHyperlink">
-						Not a member? 
-						<a href="#">Sign Up</a>
-					</span>
+					<span class="logHyperlink">Not a member? <a href="#">Sign Up</a></span>
 				</div>
 			</form>
 		</div>
 		
-
+		<div id="contacts">
+		</div>
+		
 
 		<div id="id02" class="dLogin">
 			<form  class="dLogin-content animate" action="mysuperscript.php" autocomplete="off"> 
@@ -177,7 +172,7 @@
 						<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close dLogin">&times;</span>
 					</div>
 				
-					<div class="container2">
+					<div class="container">
 						<h1> Sign up </h1>
 						<input placeholder="New Username" id="Username" required type="username"><br>
 						<input placeholder="New Password" id="Password" name="passwordsignup" required type="password"><br>
@@ -188,13 +183,53 @@
 						<button onclick = "login()" >Register </button> 
 					</p>
 					
-					<div class="container2" style="background-color:#f1f1f1">
+					<div class="container" style="background-color:#f1f1f1">
+						<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
 						<span class="logHyperlink">Already a member? <a href="#">Log in</a></span>
 					</div>
 				</p>
 			</form>
 		</div>
 		
-		
-	</body>
-</html>
+        
+        <script>
+            var contacts=[];
+            
+            function add(){
+                var Username= document.getElementById("Username or email").value;
+                var Password= document.getElementById("Password").value;
+                var newContact= {
+                    newUsername: Username,
+                    newPassword: Password
+                    }
+                    contacts.push(newContact);
+                    
+                    updateDiv();
+                    
+                    document.getElementById("Username").value="";
+                    document.getElementById("Password").value="";
+                    
+            }
+            
+            function updateDiv(){
+                    var tempContent="";
+                    for(var i = 0, i < contacts.length; i++)
+					{ 
+                            
+                        tempContent += "<p>Name : " + contacts[i].newName+
+            "<br>Password:" + contacts[i].newPassword + "<br><span onclick='del("+ i +")'>[del]</span></p>";
+                    }
+                        
+                    document.getElementById("contacts").innerHTML= tempContent;
+                }
+                function del(i){
+                    contacts.splice(i,1);
+                }
+                
+            </script>
+        </body>
+    </html>
+                
+				
+
+

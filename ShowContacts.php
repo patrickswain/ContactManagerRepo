@@ -33,7 +33,7 @@
       {
         $contacts[] = $row;
       }
-      returnWithInfo($contacts, $num_rows);
+      returnWithInfo($contacts);
     }
 		else
 		{

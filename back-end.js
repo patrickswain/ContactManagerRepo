@@ -280,27 +280,28 @@ function displayAllContacts()
         {
           // insert a new row and set the row id with the contact id
           var row = table1.insertRow(-1);
-          var rowID = jsonObject.contacts[i].Contact_ID;
+					var rowID = jsonObject[i].Contact_ID;
+          //var rowID = jsonObject.contact[i].Contact_ID;
           row.setAttribute("id", rowID);
 
           var cell1 = row.insertCell(0);
-          var cell1Text = document.createTextNode(jsonObject.contacts[i].FirstName);
+          var cell1Text = document.createTextNode(jsonObject[i].FirstName);
           cell1.appendChild(cell1Text);
 
           var cell2 = row.insertCell(1);
-          var cell2Text = document.createTextNode(jsonObject.contacts[i].LastName);
+          var cell2Text = document.createTextNode(jsonObject[i].LastName);
           cell2.appendChild(cell2Text);
 
           var cell3 = row.insertCell(2);
-          var cell3Text = document.createTextNode(jsonObject.contacts[i].PhoneNumber);
+          var cell3Text = document.createTextNode(jsonObject[i].PhoneNumber);
           cell3.appendChild(cell3Text);
 
           var cell4 = row.insertCell(3);
-          var cell4Text = document.createTextNode(jsonObject.contacts[i].Email);
+          var cell4Text = document.createTextNode(jsonObject[i].Email);
           cell4.appendChild(cell4Text);
 
 					var cell5 = row.insertCell(4);
-          var cell5Text = document.createTextNode(jsonObject.contacts[i].Address);
+          var cell5Text = document.createTextNode(jsonObject[i].Address);
           cell5.appendChild(cell5Text);
 
           var cell6 = row.insertCell(5);

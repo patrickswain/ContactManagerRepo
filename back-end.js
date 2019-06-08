@@ -345,7 +345,7 @@ function displayAllContacts()
 function deleteContact(contactID)
 {
 	// // creates the json text with contact id and userid
-  // var jsonText = '{"contact" : "' + contactID + '", "userId" : "' + USER_ID + '"}';
+  // var jsonText = '{"Contact_Id" : "' + contactID + '"}';
 	//
   // var xhr = new XMLHttpRequest();
 	// xhr.open("POST", url, true);
@@ -357,7 +357,8 @@ function deleteContact(contactID)
 	// 		if (this.readyState == 4 && this.status == 200)
 	// 		{
 	// 			// remove the row in the html for that contact
-	// 			var row = document.getElementById("contactID");
+	// 			var row = contactID;
+	// 			var table
 	// 			row.parentNode.removeChild(row);
 	// 		}
 	// 	};

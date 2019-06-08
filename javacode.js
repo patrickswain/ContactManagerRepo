@@ -28,40 +28,40 @@ function deleteContact(contactID)
 }
 
 // Display current contact info in popupwindow
-function editContactWindow()
-{
-	var getContactUrl = "contactmngr.com/API/GetContact.php";
-	var xmlhr = new XMLHttpRequest();
-
-	xmlhr.open("POST", getContactUrl, false);
-	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-	// Get current information of contact from api
-	try {
-		xmlhr.onreadystatechange = function(){
-			if (this.readyState == 4 && this.status == 200)
-			{
-				// Update HTML
-				document.getElementById("contact_edited_result").innerHTML = "Contact Edited";
-			}
-		};
-	} catch (e) {
-		// Update HTML
-		document.getElementById("contact_edited_result").innerHTML = e.message;
-	}
-
-	var jsonObject = JSON.parse( xmlhr.responseText );
-
-	// get user id from the updated jsonObject
-	USER_ID = jsonObject.id;
-
-	document.getElementById("edited_first_textbox").value = jsonObject.firstName;
-	document.getElementById("edited_last_textbox").value = jsonObject.lastName;
-	document.getElementById("edited_phone_textbox").value = jsonObject.phone;
-	document.getElementById("edited_email_textbox").value = jsonObject.email;
-	document.getElementById("edited_address_textbox").value = jsonObject.address;
-
-}
+// function editContactWindow()
+// {
+// 	var getContactUrl = "contactmngr.com/API/GetContact.php";
+// 	var xmlhr = new XMLHttpRequest();
+//
+// 	xmlhr.open("POST", getContactUrl, false);
+// 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+//
+// 	// Get current information of contact from api
+// 	try {
+// 		xmlhr.onreadystatechange = function(){
+// 			if (this.readyState == 4 && this.status == 200)
+// 			{
+// 				// Update HTML
+// 				document.getElementById("contact_edited_result").innerHTML = "Contact Edited";
+// 			}
+// 		};
+// 	} catch (e) {
+// 		// Update HTML
+// 		document.getElementById("contact_edited_result").innerHTML = e.message;
+// 	}
+//
+// 	var jsonObject = JSON.parse( xmlhr.responseText );
+//
+// 	// get user id from the updated jsonObject
+// 	USER_ID = jsonObject.id;
+//
+// 	document.getElementById("edited_first_textbox").value = jsonObject.firstName;
+// 	document.getElementById("edited_last_textbox").value = jsonObject.lastName;
+// 	document.getElementById("edited_phone_textbox").value = jsonObject.phone;
+// 	document.getElementById("edited_email_textbox").value = jsonObject.email;
+// 	document.getElementById("edited_address_textbox").value = jsonObject.address;
+//
+// }
 
 // Send new contact info to database
 function editContact ()

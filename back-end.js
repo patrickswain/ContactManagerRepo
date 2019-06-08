@@ -311,7 +311,7 @@ function displayAllContacts()
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
-          btn1.addEventListener("click", editContact(rowID));
+          btn1.addEventListener("click", editContactWindow(rowID));
           cell6.appendChild(btn1);
 
           var cell7 = row.insertCell(6);

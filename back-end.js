@@ -177,7 +177,7 @@ function addContactToDisplay()
 	var editButtonTextNode = document.createTextNode("Edit");
 	btn1.appendChild(editButtonTextNode);
 	// calls the editContact function and passes it the contactID as the rowID
-	btn1.addEventListener("click", editContact(rowID));
+	//btn1.addEventListener("click", editContact(rowID));
 	cell6.appendChild(btn1);
 
 	var cell7 = row.insertCell(6);
@@ -187,7 +187,7 @@ function addContactToDisplay()
 	var deleteButtonTextNode = document.createTextNode("Delete");
 	btn2.appendChild(deleteButtonTextNode);
 	// calls the deleteContact function and passes it the contactID as the rowID
-	btn2.addEventListener("click", deleteContact(rowID));
+	//btn2.addEventListener("click", deleteContact(rowID));
 	cell7.appendChild(btn2);
 }
 

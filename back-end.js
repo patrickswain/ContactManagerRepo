@@ -193,6 +193,7 @@ function addContactToDisplay()
 
 function displayAllContacts()
 {
+	USER_ID = 1;
 	var url = "/API/ShowContacts.php";
 	var jsonText = '{"userId" : ' + USER_ID + '}';
 

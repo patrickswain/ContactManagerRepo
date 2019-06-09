@@ -1,6 +1,5 @@
 <?php
-
-	session_start();
+session_start();
 
 	$inData = getRequestInfo();
 
@@ -26,12 +25,12 @@
 			$firstName = $row["FirstName"];
 			$lastName = $row["LastName"];
 			$id = $row["ID"];
+			$_SESSION["User_ID"] = $id;
 
-			$_SESSION['User_ID'] = $id;
-			if (isset($_SESSION['User_ID']))
+			if (isset($_SESSION["User_ID"]))
 			{
 				$mssg = "Session variable is set";
-				$userID= $_SESSION['User_ID'];
+				$userID = $_SESSION['User_ID'];
 			}
 			returnWithInfo($firstName, $lastName, $mssg, $id, $userID);
 		}
@@ -41,7 +40,7 @@
 			$lastName = "";
 			$id = 0;
 
-			$_SESSION['User_ID'] = $id;
+			$_SESSION["User_ID"] = $id;
 
 			returnWithInfo($firstName, $lastName, $mssg, $id, $userID );
 		}
@@ -66,7 +65,7 @@
 
 	function returnWithInfo( $firstName, $lastName, $id, $userID)
 	{
-		$retValue = '{"Mssg":"' . $mssg . '", "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
+		$retValue = '{"Mssg":"' . $mssg . '",, "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

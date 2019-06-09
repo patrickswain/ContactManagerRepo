@@ -29,7 +29,7 @@
 			$_SESSION['User_ID'] = $id;
 			$userID= "_SESSION['User_ID']";
 
-			returnWithInfo($firstName, $lastName, $id, $userIDs);
+			returnWithInfo($firstName, $lastName, $id, $userID);
 		}
 		else
 		{
@@ -39,7 +39,7 @@
 
 			$_SESSION['User_ID'] = $id;
 
-			returnWithInfo($firstName, $lastName, $id );
+			returnWithInfo($firstName, $lastName, $id, $userID );
 		}
 		$conn->close();
 	}
@@ -60,9 +60,9 @@
 		sendResultInfoAsJson( json_encode($err) );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $firstName, $lastName, $id, $userID)
 	{
-		$retValue = '{"ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
+		$retValue = '{"UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

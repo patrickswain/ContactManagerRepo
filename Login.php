@@ -1,8 +1,6 @@
 <?php
 session_start();
-?>
 
-<?php
 	$inData = getRequestInfo();
 
 	$id = 0;
@@ -67,7 +65,7 @@ session_start();
 
 	function returnWithInfo( $firstName, $lastName, $id, $userID)
 	{
-		$retValue = '{"Mssg":"' . $mssg . '",, "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
+		$retValue = '{"Mssg":"' . $mssg . '", "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

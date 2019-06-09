@@ -260,7 +260,7 @@ function displayAllContacts()
 					btn1.setAttribute("data-target","#editModal");
 
           //btn1.addEventListener("click", editContactWindow(rowID, contact_id));
-					btn1.addEventListener("click", alert("event listened"));
+					//btn1.addEventListener("click", alert("event listened"));
           cell6.appendChild(btn1);
 
 

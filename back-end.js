@@ -62,9 +62,7 @@ function logout()
 	firstName = "";
 	lastName = "";
 
-	hideOrShow( "loggedInDiv", false);
-	hideOrShow( "accessUIDiv", false);
-	hideOrShow( "loginDiv", true);
+	window.location.href = "index.html";
 }
 
 function addUser()
@@ -314,7 +312,8 @@ function displayAllContacts()
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 
-          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
+          //btn1.addEventListener("click", editContactWindow(rowID, contact_id));
+					btn1.addEventListener("click", alert("event listened"));
           cell6.appendChild(btn1);
 
           var cell7 = row.insertCell(6);
@@ -324,7 +323,7 @@ function displayAllContacts()
           var deleteButtonTextNode = document.createTextNode("Delete");
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID
-          btn2.addEventListener("click", deleteContact(rowID));
+          btn2.addEventListener("click", deleteContact(rowID, contact_id));
           cell7.appendChild(btn2);
 
         }
@@ -342,8 +341,9 @@ function displayAllContacts()
 	}
 }
 
-function deleteContact(contactID)
+function deleteContact(rowID, contactID)
 {
+	// var url = "/API/DeleteContact.php"
 	// // creates the json text with contact id and userid
   // var jsonText = '{"Contact_Id" : "' + contactID + '"}';
 	//
@@ -357,9 +357,8 @@ function deleteContact(contactID)
 	// 		if (this.readyState == 4 && this.status == 200)
 	// 		{
 	// 			// remove the row in the html for that contact
-	// 			var row = contactID;
-	// 			var table = getElementById("tableID");
-	// 			row.parentNode.removeChild(row);
+	// 			var table = document.getElementById("tableID");
+	// 			table.deleteRow(rowID);
 	// 		}
 	// 	};
 	// 	// send the contact id to the api
@@ -367,7 +366,7 @@ function deleteContact(contactID)
 	// }
 	// catch(err)
 	// {
-	// 	document.getElementById("deletedContactResult").innerHTML = err.message;
+	// 	//document.getElementById("deletedContactResult").innerHTML = err.message;
 	// }
 }
 

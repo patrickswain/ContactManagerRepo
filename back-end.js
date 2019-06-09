@@ -195,7 +195,6 @@ function displayAllContacts()
 	var url = "/API/ShowContacts.php";
 
 	var jsonText = '{"userID" : "' + USER_ID + '"}';
-	//var jsonText = '{"User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -223,7 +222,7 @@ function displayAllContacts()
         {
           // insert a new row and set the row id with the contact id
           var row = table1.insertRow(-1);
-					var contact_id = jsonObject[i].Contact_ID
+					var contact_id = jsonObject[i].Contact_ID;
 					var rowID = i + 1;
           row.setAttribute("id", rowID);
 

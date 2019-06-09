@@ -30,7 +30,7 @@ session_start();
 			if (isset($_SESSION["User_ID"]))
 			{
 				$mssg = "Session variable is set";
-				$userID = $_SESSION['User_ID'];
+				$userID = $_SESSION["User_ID"];
 			}
 			returnWithInfo($firstName, $lastName, $mssg, $id, $userID);
 		}

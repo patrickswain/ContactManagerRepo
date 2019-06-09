@@ -9,6 +9,7 @@
 	$firstName = "";
 	$lastName = "";
 	$error = "";
+	$mssg = "";
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -27,9 +28,12 @@
 			$id = $row["ID"];
 
 			$_SESSION['User_ID'] = $id;
-			$userID= $_SESSION['User_ID'];
-
-			returnWithInfo($firstName, $lastName, $id, $userID);
+			if (isset($_SESSION['User_ID']))
+			{
+				$mssg = "Session variable is set";
+				$userID= $_SESSION['User_ID'];
+			}
+			returnWithInfo($firstName, $lastName, $mssg, $id, $userID);
 		}
 		else
 		{
@@ -39,7 +43,7 @@
 
 			$_SESSION['User_ID'] = $id;
 
-			returnWithInfo($firstName, $lastName, $id, $userID );
+			returnWithInfo($firstName, $lastName, $mssg, $id, $userID );
 		}
 		$conn->close();
 	}
@@ -62,7 +66,7 @@
 
 	function returnWithInfo( $firstName, $lastName, $id, $userID)
 	{
-		$retValue = '{"UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
+		$retValue = '{"Mssg":' . $mssg . ', "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

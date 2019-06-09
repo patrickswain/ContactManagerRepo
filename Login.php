@@ -63,7 +63,7 @@ session_start();
 		sendResultInfoAsJson( json_encode($err) );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $id, $userID)
+	function returnWithInfo( $firstName, $lastName, $mssg,  $id, $userID)
 	{
 		$retValue = '{"Mssg":"' . $mssg . '", "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
 		sendResultInfoAsJson( $retValue );

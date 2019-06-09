@@ -32,7 +32,7 @@ session_start();
 				$mssg = "Session variable is set";
 				$userID = $_SESSION["User_ID"];
 			}
-			returnWithInfo($firstName, $lastName, $mssg, $id, $userID);
+			returnWithInfo($firstName, $lastName, $mssg, $userID);
 		}
 		else
 		{
@@ -42,7 +42,7 @@ session_start();
 
 			$_SESSION["User_ID"] = $id;
 
-			returnWithInfo($firstName, $lastName, $mssg, $id, $userID );
+			returnWithInfo($firstName, $lastName, $mssg, $userID );
 		}
 		$conn->close();
 	}
@@ -63,9 +63,9 @@ session_start();
 		sendResultInfoAsJson( json_encode($err) );
 	}
 
-	function returnWithInfo( $firstName, $lastName, $mssg,  $id, $userID)
+	function returnWithInfo( $firstName, $lastName, $mssg, $userID)
 	{
-		$retValue = '{"Mssg":"' . $mssg . '", "UserID":' . $userID . ', "ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
+		$retValue = '{"Mssg":"' . $mssg . '", "UserID":' . $userID . ', "FirstName":"' . $firstName . '","LastName":"' . $lastName . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 

@@ -27,7 +27,7 @@
 			$id = $row["ID"];
 
 			$_SESSION['User_ID'] = $id;
-			$userID= "_SESSION['User_ID']";
+			$userID= $_SESSION['User_ID'];
 
 			returnWithInfo($firstName, $lastName, $id, $userID);
 		}

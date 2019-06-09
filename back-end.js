@@ -342,6 +342,52 @@ function editContactWindow(rowID, contactID)
 	//modal.style.visibility
 }
 
+/*
+// patrick's function edited by baidong
+ function editContact (contact_id)
+ {
+ 	var editContactUrl = "/API/EditContact.php";
+
+ 	var edited_first = document.getElementById("edited_first_textbox").value;
+ 	var edited_last = document.getElementById("edited_last_textbox").value;
+ 	var edited_phone = document.getElementById("edited_phone_textbox").value;
+ 	var edited_email = document.getElementById("edited_email_textbox").value;
+ 	var edited_address = document.getElementById("edited_address_textbox").value;
+
+ 	var jsonText = '{"FirstName" : "' + edited_first_name + '",
+ 			              "LastName" : "' + edited_last_name + '",
+ 										"Contact_ID"  : "' + contact_id + '",
+ 										"PhoneNumber" : "' + edited_phone + '",
+ 										"Email" : "' + edited_email + '",
+ 										"Address" : "' + edited_address +  '}';
+
+ 	// Connect to API
+ 	var xmlhr = new XMLHttpRequest();
+ 	xmlhr.open("POST", editContactUrl, true);
+ 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+ 	// Send jsonText to API
+ 	try {
+ 		xmlhr.send(jsonText);
+ 		xmlhr.onreadystatechange =function(){
+ 			if (this.readyState == 4 && this.status == 200)
+ 			{
+ 				// Update HTML
+				document.getElementById("edited_first_textbox").innerHTML = edited_first;
+			  document.getElementById("edited_last_textbox").innerHTML = edited_last;
+			  document.getElementById("edited_phone_textbox").innerHTML = edited_phone;
+			  document.getElementById("edited_email_textbox").innerHTML = edited_email;
+			  document.getElementById("edited_address_textbox").innerHTML = edited_address;
+ 			}
+ 		};
+
+ 	} catch (e) {
+ 		// Update HTML
+ 		document.getElementById("contact_edited_result").innerHTML = e.message;
+ 	}
+ }
+ */
+
 
 
 // Display current contact info in popupwindow

@@ -4,8 +4,7 @@
 
   $inData = getRequestInfo();
 
-  //$userID= "_SESSION['User_ID']";
-  $userID = $inData["userID"];
+  $userID= $_SESSION["User_ID"];
   $firstName = "";
   $lastName = "";
   $phoneNumber = "";

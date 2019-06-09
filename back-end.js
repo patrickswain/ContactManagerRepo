@@ -218,63 +218,8 @@ function displayAllContacts()
 				// gets the div id of the spot on the homepage where displayAllContacts will go.
         var homepageDiv = document.getElementById("contactDisplay");
 
-        // create table and header elements with class for light design.
+        // get tableid
         var table1 = document.getElementById("tableID");
-
-				/*
-        table1.setAttribute("class","table");
-        var header = table1.createTHead();
-        header.setAttribute("class","thead-light");
-
-        // create row for header names
-        var headRow = table1.insertRow(0);
-
-        // add firstname header
-        var headCell1 = document.createElement("th");
-        headCell1.setAttribute("scope", "col");
-        headCell1Text = document.createTextNode("First Name");
-        headCell1.appendChild(headCell1Text);
-        headRow.appendChild(headCell1);
-
-        var headCell2 = document.createElement("th");
-        headCell2.setAttribute("scope", "col");
-        headCell2Text = document.createTextNode("Last Name");
-        headCell2.appendChild(headCell2Text);
-        headRow.appendChild(headCell2);
-
-        var headCell3 = document.createElement("th");
-        headCell3.setAttribute("scope", "col");
-        headCell3Text = document.createTextNode("Phone Number");
-        headCell3.appendChild(headCell3Text);
-        headRow.appendChild(headCell3);
-
-        var headCell4 = document.createElement("th");
-        headCell4.setAttribute("scope", "col");
-        headCell4Text = document.createTextNode("Email");
-        headCell4.appendChild(headCell4Text);
-        headRow.appendChild(headCell4);
-
-				var headCell5 = document.createElement("th");
-        headCell5.setAttribute("scope", "col");
-        headCell5Text = document.createTextNode("Address");
-        headCell5.appendChild(headCell5Text);
-        headRow.appendChild(headCell5);
-
-				var headCell6 = document.createElement("th");
-        headCell6.setAttribute("scope", "col");
-        headCell6Text = document.createTextNode("Edit Contact");
-        headCell6.appendChild(headCell6Text);
-        headRow.appendChild(headCell6);
-
-				var headCell7 = document.createElement("th");
-        headCell7.setAttribute("scope", "col");
-        headCell7Text = document.createTextNode("Delete Contact");
-        headCell7.appendChild(headCell7Text);
-        headRow.appendChild(headCell7);
-
-        var body = document.createElement("tbody");
-        table1.appendChild(body);
-				*/
 
         for(i = 0; i < jsonObject.length; i++)
         {
@@ -308,14 +253,15 @@ function displayAllContacts()
           var btn1 = document.createElement("button");
           btn1.setAttribute("type", "button");
           btn1.setAttribute("class", "btn btn-primary");
+					btn1.setAttribute("id", "rowID");
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
+          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
-
-          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
           cell6.appendChild(btn1);
+
 
           var cell7 = row.insertCell(6);
           var btn2 = document.createElement("button");
@@ -383,22 +329,15 @@ function editContactWindow(rowID, contactID)
 	var table = document.getElementById("tableID");
 
 	//var row = contactID;
-  document.getElementById("edited_first_textbox").innerHTML = table.rows[rowID].cells[0].value;
-  document.getElementById("edited_last_textbox").innerHTML = table.rows[rowID].cells[1].value;
-  document.getElementById("edited_phone_textbox").innerHTML = table.rows[rowID].cells[2].value;
-  document.getElementById("edited_email_textbox").innerHTML = table.rows[rowID].cells[3].value;
-  document.getElementById("edited_address_textbox").innerHTML = table.rows[rowID].cells[4].value;
+  document.getElementById("edited_first_textbox").value = table.rows[rowID].cells[0].value;
+  document.getElementById("edited_last_textbox").value = table.rows[rowID].cells[1].value;
+  document.getElementById("edited_phone_textbox").value = table.rows[rowID].cells[2].value;
+  document.getElementById("edited_email_textbox").value = table.rows[rowID].cells[3].value;
+  document.getElementById("edited_address_textbox").value = table.rows[rowID].cells[4].value;
 
 	//$("#editModal").modal("show");
 	// modal.style.visibility = "visible";
 	// modal.style.display = "block";
-
-	// document.getElementById("edited_first_textbox").innerHTML = row.cells[0].value;
-  // document.getElementById("edited_last_textbox").innerHTML = row.cells[1].value;
-  // document.getElementById("edited_phone_textbox").innerHTML = row.cells[2].value;
-  // document.getElementById("edited_email_textbox").innerHTML = row.cells[3].value;
-  // document.getElementById("edited_address_textbox").innerHTML = row.cells[4].value;
-
   //modal.modal();
 	//modal.style.visibility
 }

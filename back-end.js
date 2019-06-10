@@ -277,9 +277,12 @@ function displayAllContacts()
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
-          btn1.addEventListener("click", function () {
-						editContactWindow(rowID, contact_id);
-					});
+          //btn1.addEventListener("click", function () {
+					//	editContactWindow(rowID, contact_id);
+					//});
+					btn1.addEventListener("click", (function (rowID, contact_id)
+					{return function() {editContactWindow(rowID, contact_id);
+					}})(rowID, contact_id));
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 
@@ -295,9 +298,12 @@ function displayAllContacts()
           var deleteButtonTextNode = document.createTextNode("Delete");
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID
-          btn2.addEventListener("click", function () {
-						deleteContact(rowID, contact_id);
-					});
+          //btn2.addEventListener("click", function () {
+					//	deleteContact(rowID, contact_id);
+					//});
+					btn2.addEventListener("click", (function (rowID, contact_id)
+					{return function() {deleteContact(rowID, contact_id);
+					}})(rowID, contact_id));
           cell7.appendChild(btn2);
 
         }
@@ -317,34 +323,36 @@ function displayAllContacts()
 
 function deleteContact(rowID, contactID)
 {
-	// var url = "/API/DeleteContact.php"
-	// // creates the json text with contact id and userid
-  // var jsonText = '{"Contact_Id" : "' + contactID + '"}';
-	//
-	// // remove the row in the html for that contact
-	// var table = document.getElementById("tableID");
-	// table.deleteRow(rowID);
+	/*
+	 var url = "/API/DeleteContact.php"
+	 // creates the json text with contact id and userid
+   var jsonText = '{"Contact_Id" : "' + contactID + '"}';
 
-  // var xhr = new XMLHttpRequest();
-	// xhr.open("POST", url, true);
-  // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  // try
-	// {
-	// 	xhr.onreadystatechange = function()
-	// 	{
-	// 		if (this.readyState == 4 && this.status == 200)
-	// 		{
-	//
-	// 		}
-	// 	};
-	// 	// send the contact id to the api
-	// 	xhr.send(jsonText);
-	// }
-	// catch(err)
-	// {
-	// 	Console.log(err);
-	// 	//document.getElementById("deletedContactResult").innerHTML = err.message;
-	// }
+	 // remove the row in the html for that contact
+	 var table = document.getElementById("tableID");
+	 table.deleteRow(rowID);
+
+   var xhr = new XMLHttpRequest();
+	 xhr.open("POST", url, true);
+   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+   try
+	 {
+	 	xhr.onreadystatechange = function()
+	 	{
+	 		if (this.readyState == 4 && this.status == 200)
+	 		{
+
+	 		}
+	 	};
+	 	// send the contact id to the api
+	 	xhr.send(jsonText);
+	 }
+	 catch(err)
+	 {
+	 	Console.log(err);
+	 	//document.getElementById("deletedContactResult").innerHTML = err.message;
+	 }
+	 */
 }
 
 

@@ -10,6 +10,7 @@ session_start();
 	$phoneNumber = $inData["PhoneNumber"];
 	$email = $inData["Email"];
 	$address = $inData["Address"];
+	$userID = $inData["User_ID"];
 
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");

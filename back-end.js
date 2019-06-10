@@ -266,7 +266,8 @@ function displayAllContacts()
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
-          btn1.addEventListener("click", editContactWindow(rowID, contact_id));
+          btn1.addEventListener("click", function () {
+						editContactWindow(rowID, contact_id);
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 

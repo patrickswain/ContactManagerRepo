@@ -444,7 +444,7 @@ function searchContact()
   filter = input.value.toUpperCase();
   table = document.getElementById("tableID");
   tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++)
+  for (i = 1; i < tr.length; i++)
 	{
       td = tr[i].getElementsByTagName("td");
       for (j = 0; j < td.length; j++)

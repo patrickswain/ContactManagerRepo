@@ -101,17 +101,20 @@ function addUser()
 
 function addContact()
 {
+	// Testing
+	USER_ID = 1;
+
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;
 	var contact_last_name = document.getElementById("add_lastname_textbox").value;
-	var contact_email = document.getElementById("add_phone_textbox").value;
-	var contact_phone = document.getElementById("add_email_textbox").value;
+	var contact_email = document.getElementById("add_email_textbox").value;
+	var contact_phone = document.getElementById("add_phone_textbox").value;
 	var contact_address = document.getElementById("add_address_textbox").value;
 
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";
 
-	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
+	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID" : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
 
 	// Connect to API
 	var url = "/API/AddContact.php";
@@ -195,7 +198,6 @@ function displayAllContacts()
 	var url = "/API/ShowContacts.php";
 
 	var jsonText = '{"userID" : "' + USER_ID + '"}';
-	//var jsonText = '{"User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
 
   var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -223,7 +225,7 @@ function displayAllContacts()
         {
           // insert a new row and set the row id with the contact id
           var row = table1.insertRow(-1);
-					var contact_id = jsonObject[i].Contact_ID
+					var contact_id = jsonObject[i].Contact_ID;
 					var rowID = i + 1;
           row.setAttribute("id", rowID);
 
@@ -330,11 +332,11 @@ function editContactWindow(rowID, contactID)
 	var table = document.getElementById("tableID");
 
 	//var row = contactID;
-  document.getElementById("edited_first_textbox").value = table.rows[rowID].cells[0].value;
-  document.getElementById("edited_last_textbox").value = table.rows[rowID].cells[1].value;
-  document.getElementById("edited_phone_textbox").value = table.rows[rowID].cells[2].value;
-  document.getElementById("edited_email_textbox").value = table.rows[rowID].cells[3].value;
-  document.getElementById("edited_address_textbox").value = table.rows[rowID].cells[4].value;
+  document.getElementById("edited_first_textbox").value = table.rows[rowID].cells[0].innerText;
+  document.getElementById("edited_last_textbox").value = table.rows[rowID].cells[1].innerText;
+  document.getElementById("edited_phone_textbox").value = table.rows[rowID].cells[2].innerText;
+  document.getElementById("edited_email_textbox").value = table.rows[rowID].cells[3].innerText;
+  document.getElementById("edited_address_textbox").value = table.rows[rowID].cells[4].innerText;
 
 	//$("#editModal").modal("show");
 	// modal.style.visibility = "visible";
@@ -342,6 +344,52 @@ function editContactWindow(rowID, contactID)
   //modal.modal();
 	//modal.style.visibility
 }
+
+/*
+// patrick's function edited by baidong
+ function editContact (contact_id)
+ {
+ 	var editContactUrl = "/API/EditContact.php";
+
+ 	var edited_first = document.getElementById("edited_first_textbox").value;
+ 	var edited_last = document.getElementById("edited_last_textbox").value;
+ 	var edited_phone = document.getElementById("edited_phone_textbox").value;
+ 	var edited_email = document.getElementById("edited_email_textbox").value;
+ 	var edited_address = document.getElementById("edited_address_textbox").value;
+
+ 	var jsonText = '{"FirstName" : "' + edited_first_name + '",
+ 			              "LastName" : "' + edited_last_name + '",
+ 										"Contact_ID"  : "' + contact_id + '",
+ 										"PhoneNumber" : "' + edited_phone + '",
+ 										"Email" : "' + edited_email + '",
+ 										"Address" : "' + edited_address +  '}';
+
+ 	// Connect to API
+ 	var xmlhr = new XMLHttpRequest();
+ 	xmlhr.open("POST", editContactUrl, true);
+ 	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+ 	// Send jsonText to API
+ 	try {
+ 		xmlhr.send(jsonText);
+ 		xmlhr.onreadystatechange =function(){
+ 			if (this.readyState == 4 && this.status == 200)
+ 			{
+ 				// Update HTML
+				document.getElementById("edited_first_textbox").innerHTML = edited_first;
+			  document.getElementById("edited_last_textbox").innerHTML = edited_last;
+			  document.getElementById("edited_phone_textbox").innerHTML = edited_phone;
+			  document.getElementById("edited_email_textbox").innerHTML = edited_email;
+			  document.getElementById("edited_address_textbox").innerHTML = edited_address;
+ 			}
+ 		};
+
+ 	} catch (e) {
+ 		// Update HTML
+ 		document.getElementById("contact_edited_result").innerHTML = e.message;
+ 	}
+ }
+ */
 
 
 

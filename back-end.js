@@ -125,6 +125,12 @@ function addContact()
 	// Send jsonText to API
 	try {
 		xmlhr.send(jsonText);
+
+		var jsonObject = JSON.parse( xmlhr.responseText );
+
+    // get contact id from the updated jsonObject
+		contactID = jsonObject.contactID;
+
 		xmlhr.onreadystatechange =function(){
 			if (this.readyState == 4 && this.status == 200)
 			{
@@ -133,7 +139,7 @@ function addContact()
 			}
 		};
 
-		addContactToDisplay();
+		addContactToDisplay(contactID);
 	} catch (e) {
 		// Update HTML
 		document.getElementById("contact_added_result").innerHTML = e.message;
@@ -141,10 +147,11 @@ function addContact()
 }
 
 // new function to add contact to display
-function addContactToDisplay()
+function addContactToDisplay(contactID)
 {
 	table1 = document.getElementById("tableID");
 
+	var rowID = table1.rows.length;
 	var row = table1.insertRow(-1);
 	/*
 	var rowID = jsonObject.contacts[i].contactID;
@@ -188,7 +195,9 @@ function addContactToDisplay()
 	var deleteButtonTextNode = document.createTextNode("Delete");
 	btn2.appendChild(deleteButtonTextNode);
 	// calls the deleteContact function and passes it the contactID as the rowID
-	//btn2.addEventListener("click", deleteContact(rowID));
+	btn2.addEventListener("click", function () {
+		deleteContact(rowID, contact_id);
+	});
 	cell7.appendChild(btn2);
 }
 
@@ -224,7 +233,7 @@ function displayAllContacts()
         for(i = 0; i < jsonObject.length; i++)
         {
           // insert a new row and set the row id with the contact id
-          var row = table1.insertRow(-1);
+          var row = table1.insertRow(1);
 					var contact_id = jsonObject[i].Contact_ID;
 					var rowID = i + 1;
           row.setAttribute("id", rowID);
@@ -273,7 +282,9 @@ function displayAllContacts()
           var deleteButtonTextNode = document.createTextNode("Delete");
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID
-          btn2.addEventListener("click", deleteContact(rowID, contact_id));
+          btn2.addEventListener("click", function () {
+						deleteContact(rowID, contact_id);
+					});
           cell7.appendChild(btn2);
 
         }
@@ -297,6 +308,10 @@ function deleteContact(rowID, contactID)
 	// // creates the json text with contact id and userid
   // var jsonText = '{"Contact_Id" : "' + contactID + '"}';
 	//
+	// // remove the row in the html for that contact
+	// var table = document.getElementById("tableID");
+	// table.deleteRow(rowID);
+
   // var xhr = new XMLHttpRequest();
 	// xhr.open("POST", url, true);
   // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -306,9 +321,7 @@ function deleteContact(rowID, contactID)
 	// 	{
 	// 		if (this.readyState == 4 && this.status == 200)
 	// 		{
-	// 			// remove the row in the html for that contact
-	// 			var table = document.getElementById("tableID");
-	// 			table.deleteRow(rowID);
+	//
 	// 		}
 	// 	};
 	// 	// send the contact id to the api
@@ -316,6 +329,7 @@ function deleteContact(rowID, contactID)
 	// }
 	// catch(err)
 	// {
+	// 	Console.log(err);
 	// 	//document.getElementById("deletedContactResult").innerHTML = err.message;
 	// }
 }

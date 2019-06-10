@@ -229,6 +229,11 @@ function displayAllContacts()
 				// phone # and email and contact id
         var jsonObject = JSON.parse( xhr.responseText );
 
+				if (jsonObject.length < 1)
+				{
+					return;
+				}
+				
         var i;
 				// gets the div id of the spot on the homepage where displayAllContacts will go.
         var homepageDiv = document.getElementById("contactDisplay");

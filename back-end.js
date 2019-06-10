@@ -4,7 +4,7 @@ var lastName = "";
 
 function login()
 {
-	var USER_ID = 0;
+	USER_ID = 0;
 	var newUrl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
@@ -29,7 +29,7 @@ function login()
 		var jsonObject = JSON.parse( xhr.responseText );
 
     // get user id from the updated jsonObject
-		USER_ID = jsonObject.ID;
+		USER_ID = jsonObject.UserID;
 
     // if id is less than 1 that means the combination is not in our server.
 		if( USER_ID < 1 )
@@ -102,7 +102,7 @@ function addUser()
 function addContact()
 {
 	// Testing
-	//USER_ID = 1;
+	USER_ID = 1;
 
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;

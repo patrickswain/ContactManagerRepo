@@ -6,7 +6,7 @@ session_start();
 	$searchResults = "";
 	$searchCount = 0;
 	$error = "";
-	$userID = 0;
+	$userID = $inData["User_ID"];
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -15,8 +15,7 @@ session_start();
 	}
 	else
 	{
-		$userID = $_SESSION["User_ID"];
-    $sql = "SELECT * FROM ContactInfo WHERE (User_ID= $userID) AND  (CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%')";
+    $sql = "SELECT * FROM ContactInfo WHERE (User_ID = $userID) AND  (CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%')";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();
 		if (mysqli_num_rows($result) > 0)

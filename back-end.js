@@ -60,7 +60,9 @@ function login()
 
 		window.location.href = "loggedInPage.html";
 
-		function () {displayAllContacts()};
+		function () {
+			displayAllContacts();
+		};
 	}
 	catch(err)
 	{
@@ -205,7 +207,7 @@ function addContactToDisplay(contactID)
 	btn1.addEventListener("click", (function (rowID, contactID)
 	{return function() {editContactWindow(rowID, contactID);
 	}})(rowID, contactID));
-	
+
 	cell6.appendChild(btn1);
 
 	var cell7 = row.insertCell(6);

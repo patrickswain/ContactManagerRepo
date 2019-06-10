@@ -233,7 +233,7 @@ function displayAllContacts()
         for(i = 0; i < jsonObject.length; i++)
         {
           // insert a new row and set the row id with the contact id
-          var row = table1.insertRow(1);
+          var row = table1.insertRow(-1);
 					var contact_id = jsonObject[i].Contact_ID;
 					var rowID = i + 1;
           row.setAttribute("id", rowID);

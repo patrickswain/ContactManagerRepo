@@ -18,7 +18,7 @@ session_start();
 	}
 	else
 	{
-	  $userID = $_SESSION["User_ID"];
+	  //$userID = $_SESSION["User_ID"];
 		$sql = "INSERT INTO `ContactInfo` (`FirstName`, `LastName`, `User_ID`, `PhoneNumber`, `Email`, `Address` ) VALUES ('" . $firstName . "','" . $lastName . "','" . $userID. "','" . $phoneNumber . "','" . $email . "','" . $address . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{

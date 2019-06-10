@@ -382,7 +382,7 @@ function editContactWindow(rowID, contactID)
 // patrick's function edited by baidong
  function editContact (rowID, contactID)
  {
- 	var editContactUrl = "/API/EditContact.php";
+ 	var editContactUrl = "/API/UpdateContact.php";
 
  	var edited_first = document.getElementById("edited_first_textbox").value;
  	var edited_last = document.getElementById("edited_last_textbox").value;

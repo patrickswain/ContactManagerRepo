@@ -3,7 +3,6 @@ session_start();
 
 	$inData = getRequestInfo();
 
-	//$userID = "";
 	$userID = $inData["User_ID"];
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
@@ -38,7 +37,7 @@ session_start();
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
-	} 
+	}
 
 	function sendResultInfoAsJson( $obj )
 	{

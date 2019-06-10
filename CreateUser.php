@@ -38,7 +38,6 @@ session_start();
 		{
 			$row = $result->fetch_assoc();
 			$id = $row["ID"];
-			$_SESSION["User_ID"] = $id;
 
 			returnWithInfo( $id );
 		}

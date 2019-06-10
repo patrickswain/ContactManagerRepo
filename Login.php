@@ -3,7 +3,6 @@ session_start();
 
 	$inData = getRequestInfo();
 
-	$id = 0;
 	$userID = 0;
 	$firstName = "";
 	$lastName = "";
@@ -24,14 +23,8 @@ session_start();
 			$row = $result->fetch_assoc();
 			$firstName = $row["FirstName"];
 			$lastName = $row["LastName"];
-			$id = $row["ID"];
-			$_SESSION["User_ID"] = $id;
+			$userID = $row["ID"];
 
-			if (isset($_SESSION["User_ID"]))
-			{
-				$mssg = "Session variable is set";
-				$userID = $_SESSION["User_ID"];
-			}
 			returnWithInfo($firstName, $lastName, $mssg, $userID);
 		}
 		else

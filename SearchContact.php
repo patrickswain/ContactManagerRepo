@@ -15,7 +15,7 @@ session_start();
 	}
 	else
 	{
-		$userID= $_SESSION["User_ID"];
+		$userID = $_SESSION["User_ID"];
     $sql = "SELECT * FROM ContactInfo WHERE (User_ID= $userID) AND  (CONCAT(FirstName, ' ', LastName) LIKE '%" . $inData["search"] . "%' OR FirstName LIKE '%" . $inData["search"] . "%' OR LastName LIKE '%" . $inData["search"] . "%')";
 		$result = mysqli_query($conn, $sql);
     $contacts = array();

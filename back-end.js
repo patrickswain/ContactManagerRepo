@@ -5,6 +5,8 @@ var lastName = "";
 function login()
 {
 	USER_ID = 0;
+	//sessionStorage.setItem("userID", "0");
+
 	var newUrl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
@@ -30,6 +32,7 @@ function login()
 
     // get user id from the updated jsonObject
 		USER_ID = jsonObject.UserID;
+		//sessionStorage.getItem("userID");
 
     // if id is less than 1 that means the combination is not in our server.
 		if( USER_ID < 1 )
@@ -38,6 +41,8 @@ function login()
 			return;
 		}
 
+		sessionStorage.setItem("userID", USER_ID);
+		
     // retrieve first name and last name from the updated jsonObject
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
@@ -102,7 +107,7 @@ function addUser()
 function addContact()
 {
 	// Testing
-	USER_ID = 1;
+	USER_ID = sessionStorage.getItem("userID");
 
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;

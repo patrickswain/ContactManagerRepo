@@ -12,10 +12,14 @@ function login()
 	var loginUsername = document.getElementById("username_textbox").value;
   var loginPassword = document.getElementById("password_textbox").value;
 
+	// Hashing password with username as salt
+	var SHA512 = new Hashes.MD5().hex(loginPassword + loginUsername);
+	password = SHA512;
+
   document.getElementById("login_result").innerHTML = "test-test-test";
 
   // turn json object to string
-  var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
+  var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + password + '"}';
 
   // setting up xhr object to connect to server
 	var url = "/API/Login.php";
@@ -79,8 +83,8 @@ function addUser()
 	var user_first_name = document.getElementById("new_user_first_name").value;
 	var user_last_name = document.getElementById("new_user_last_name").value;
 
-	//var SHA512 = new Hashes.SHA512;
-	var SHA512 = new Hashes.MD5().hex(password);
+	// Hashing password with username as salt
+	var SHA512 = new Hashes.MD5().hex(password + username);
 	password = SHA512;
 
 	// Set result indicator to blank

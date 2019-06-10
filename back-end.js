@@ -5,15 +5,21 @@ var lastName = "";
 function login()
 {
 	USER_ID = 0;
+	//sessionStorage.setItem("userID", "0");
+
 	var newUrl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
   var loginPassword = document.getElementById("password_textbox").value;
 
+	// Hashing password with username as salt
+	var SHA512 = new Hashes.MD5().hex(loginPassword + loginUsername);
+	password = SHA512;
+
   document.getElementById("login_result").innerHTML = "test-test-test";
 
   // turn json object to string
-  var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + loginPassword + '"}';
+  var jsonLoginString = '{"login" : "' + loginUsername + '", "password" : "' + password + '"}';
 
   // setting up xhr object to connect to server
 	var url = "/API/Login.php";
@@ -30,6 +36,7 @@ function login()
 
     // get user id from the updated jsonObject
 		USER_ID = jsonObject.UserID;
+		//sessionStorage.getItem("userID");
 
     // if id is less than 1 that means the combination is not in our server.
 		if( USER_ID < 1 )
@@ -37,6 +44,8 @@ function login()
 			document.getElementById("login_result").innerHTML = "Username or Password is incorrect";
 			return;
 		}
+
+		sessionStorage.setItem("userID", USER_ID);
 
     // retrieve first name and last name from the updated jsonObject
 		firstName = jsonObject.firstName;
@@ -59,6 +68,7 @@ function login()
 function logout()
 {
 	USER_ID = 0;
+	sessionStorage.setItem("userID", 0);
 	firstName = "";
 	lastName = "";
 
@@ -72,6 +82,10 @@ function addUser()
 	var password = document.getElementById("new_password").value;
 	var user_first_name = document.getElementById("new_user_first_name").value;
 	var user_last_name = document.getElementById("new_user_last_name").value;
+
+	// Hashing password with username as salt
+	var SHA512 = new Hashes.MD5().hex(password + username);
+	password = SHA512;
 
 	// Set result indicator to blank
 	document.getElementById("user_added_result").innerHTML = "";
@@ -102,7 +116,7 @@ function addUser()
 function addContact()
 {
 	// Testing
-	USER_ID = 1;
+	USER_ID = sessionStorage.getItem("userID");
 
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;
@@ -203,7 +217,7 @@ function addContactToDisplay(contactID)
 
 function displayAllContacts()
 {
-	USER_ID = 1;
+	USER_ID = sessionStorage.getItem("userID");
 	var url = "/API/ShowContacts.php";
 
 	var jsonText = '{"userID" : "' + USER_ID + '"}';
@@ -222,6 +236,11 @@ function displayAllContacts()
 				// i should receive back an array of objects with firstname, lastname
 				// phone # and email and contact id
         var jsonObject = JSON.parse( xhr.responseText );
+
+				if (jsonObject == "No records found")
+				{
+					return;
+				}
 
         var i;
 				// gets the div id of the spot on the homepage where displayAllContacts will go.
@@ -270,8 +289,8 @@ function displayAllContacts()
 					//	editContactWindow(rowID, contact_id);
 					//});
 					btn1.addEventListener("click", (function (rowID, contact_id)
-			    {return function() {editContactWindow(rowID, contact_id);
-			    }})(rowID, contact_id));
+					{return function() {editContactWindow(rowID, contact_id);
+					}})(rowID, contact_id));
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 
@@ -291,8 +310,8 @@ function displayAllContacts()
 					//	deleteContact(rowID, contact_id);
 					//});
 					btn2.addEventListener("click", (function (rowID, contact_id)
-			    {return function() {deleteContact(rowID, contact_id);
-			    }})(rowID, contact_id));
+					{return function() {deleteContact(rowID, contact_id);
+					}})(rowID, contact_id));
           cell7.appendChild(btn2);
 
         }
@@ -312,34 +331,36 @@ function displayAllContacts()
 
 function deleteContact(rowID, contactID)
 {
-	// var url = "/API/DeleteContact.php"
-	// // creates the json text with contact id and userid
-  // var jsonText = '{"Contact_Id" : "' + contactID + '"}';
-	//
-	// // remove the row in the html for that contact
-	// var table = document.getElementById("tableID");
-	// table.deleteRow(rowID);
 
-  // var xhr = new XMLHttpRequest();
-	// xhr.open("POST", url, true);
-  // xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  // try
-	// {
-	// 	xhr.onreadystatechange = function()
-	// 	{
-	// 		if (this.readyState == 4 && this.status == 200)
-	// 		{
-	//
-	// 		}
-	// 	};
-	// 	// send the contact id to the api
-	// 	xhr.send(jsonText);
-	// }
-	// catch(err)
-	// {
-	// 	Console.log(err);
-	// 	//document.getElementById("deletedContactResult").innerHTML = err.message;
-	// }
+	 var url = "/API/DeleteContact.php"
+	 // creates the json text with contact id and userid
+   var jsonText = '{"Contact_Id" : "' + contactID + '"}';
+
+	 // remove the row in the html for that contact
+	 var table = document.getElementById("tableID");
+	 table.deleteRow(rowID);
+
+   var xhr = new XMLHttpRequest();
+	 xhr.open("POST", url, true);
+   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+   try
+	 {
+	 	xhr.onreadystatechange = function()
+	 	{
+	 		if (this.readyState == 4 && this.status == 200)
+	 		{
+
+	 		}
+	 	};
+	 	// send the contact id to the api
+	 	xhr.send(jsonText);
+	 }
+	 catch(err)
+	 {
+	 	Console.log(err);
+	 	//document.getElementById("deletedContactResult").innerHTML = err.message;
+	 }
+
 }
 
 
@@ -348,7 +369,11 @@ function editContactWindow(rowID, contactID)
 {
   var modal = document.getElementById("editModal");
   var saveBtn = document.getElementById("saveButtonEdit");
-  //saveBtn.addEventListener("click", editContact(contactID))
+  //saveBtn.addEventListener("click", editContact(contactID));
+	saveBtn.addEventListener("click", (function (rowID, contactID)
+	{return function() {editContact(rowID, contactID);
+	}})(rowID, contactID));
+	saveBtn.setAttribute("data-dismiss", "modal");
 
   //var row = document.getElementById("contactID");
 	var table = document.getElementById("tableID");
@@ -367,11 +392,11 @@ function editContactWindow(rowID, contactID)
 	//modal.style.visibility
 }
 
-/*
+
 // patrick's function edited by baidong
- function editContact (contact_id)
+ function editContact (rowID, contactID)
  {
- 	var editContactUrl = "/API/EditContact.php";
+ 	var editContactUrl = "/API/UpdateContact.php";
 
  	var edited_first = document.getElementById("edited_first_textbox").value;
  	var edited_last = document.getElementById("edited_last_textbox").value;
@@ -379,18 +404,17 @@ function editContactWindow(rowID, contactID)
  	var edited_email = document.getElementById("edited_email_textbox").value;
  	var edited_address = document.getElementById("edited_address_textbox").value;
 
- 	var jsonText = '{"FirstName" : "' + edited_first_name + '",
- 			              "LastName" : "' + edited_last_name + '",
- 										"Contact_ID"  : "' + contact_id + '",
- 										"PhoneNumber" : "' + edited_phone + '",
- 										"Email" : "' + edited_email + '",
- 										"Address" : "' + edited_address +  '}';
+ 	var jsonText = '{"FirstName" : "' + edited_first + '","LastName" : "' + edited_last + '","Contact_ID" : "' + contactID + '","PhoneNumber" : "' + edited_phone + '","Email" : "' + edited_email + '","Address" : "' + edited_address +  '"}';
+
+	//disregard this just testing
+	//var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
 
  	// Connect to API
  	var xmlhr = new XMLHttpRequest();
  	xmlhr.open("POST", editContactUrl, true);
  	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+	table = document.getElementById("tableID");
  	// Send jsonText to API
  	try {
  		xmlhr.send(jsonText);
@@ -398,21 +422,48 @@ function editContactWindow(rowID, contactID)
  			if (this.readyState == 4 && this.status == 200)
  			{
  				// Update HTML
-				document.getElementById("edited_first_textbox").innerHTML = edited_first;
-			  document.getElementById("edited_last_textbox").innerHTML = edited_last;
-			  document.getElementById("edited_phone_textbox").innerHTML = edited_phone;
-			  document.getElementById("edited_email_textbox").innerHTML = edited_email;
-			  document.getElementById("edited_address_textbox").innerHTML = edited_address;
+				table.rows[rowID].cells[0].innerHTML = edited_first;
+			  table.rows[rowID].cells[1].innerHTML = edited_last;
+			  table.rows[rowID].cells[2].innerHTML = edited_phone;
+			  table.rows[rowID].cells[3].innerHTML = edited_email;
+			  table.rows[rowID].cells[4].innerHTML = edited_address;
  			}
  		};
 
  	} catch (e) {
  		// Update HTML
- 		document.getElementById("contact_edited_result").innerHTML = e.message;
+		// using contact added result in meantime
+ 		document.getElementById("contact_added_result").innerHTML = e.message;
  	}
  }
- */
 
+function searchContact()
+{
+	var input, filter, found, table, tr, td, i, j;
+  input = document.getElementById("search_textbox");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tableID");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++)
+	{
+      td = tr[i].getElementsByTagName("td");
+      for (j = 0; j < td.length; j++)
+			{
+        if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1)
+				{
+          found = true;
+        }
+      }
+      if (found) {
+          tr[i].style.display = "";
+          found = false;
+      }
+			else
+			{
+          tr[i].style.display = "none";
+      }
+  }
+}
 
 
 // Display current contact info in popupwindow

@@ -4,7 +4,7 @@ session_start();
 
 	$inData = getRequestInfo();
 
-	$userID = 0;
+	$contactID = $inData["Contact_ID"];
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
 	$phoneNumber = $inData["PhoneNumber"];
@@ -19,8 +19,8 @@ session_start();
 	}
 	else
 	{
-		$userID = $_SESSION["User_ID"];
-    $sql = "UPDATE ContactInfo SET FirstName='" . $firstName . "', LastName='" . $lastName . "', PhoneNumber='" . $phoneNumber . "', Email='" . $email . "', Address='" . $address . "' WHERE Contact_ID='" . $inData["id"] . "'";
+		//$userID = $_SESSION["User_ID"];
+    $sql = "UPDATE ContactInfo SET FirstName='" . $firstName . "', LastName='" . $lastName . "', PhoneNumber='" . $phoneNumber . "', Email='" . $email . "', Address='" . $address . "' WHERE Contact_ID='" . $contactID . "'";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );

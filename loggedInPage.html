@@ -18,13 +18,14 @@
 			<div id = "contactsPage">
         <div id = "topOfPage">
           <h1> Contact MNGR</h1>
-          <p> Welcome insertfirstname insertlastname </p>
+          <p innerHTML = 'Welcome ' + sessionStorage.getItem("firstName") + sessionStorage.getItem("lastName")></p>
           <input type = "text"
                  id = "search_textbox"
                  onkeyup="searchContact()"
                  placeholder="Search for Contacts..."/>
-          <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add Contact</button>
-          <button onclick = "logout()" class="btn btn-success" >Logout</button>
+          <button onclick = "alert('hola')"> Search</button>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Contact</button>
+          <button onclick = "logout()">Logout</button>
         </div>
         <div id = "contactDisplay">
           <button onclick ="displayAllContacts()">Display Contacts</button>

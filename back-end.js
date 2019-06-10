@@ -51,6 +51,9 @@ function login()
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
 
+		sessionStorage.setItem("firstName") = firstName;
+		sessionStorage.setItem("lastName") = lastName;
+
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 	$inData = getRequestInfo();
@@ -11,7 +10,6 @@ session_start();
 	$email = $inData["Email"];
 	$address = $inData["Address"];
 	$userID = $inData["User_ID"];
-
 
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
@@ -45,6 +43,5 @@ session_start();
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-
 
 ?>

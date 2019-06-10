@@ -1,11 +1,9 @@
 <?php
-
 session_start();
 
 	$inData = getRequestInfo();
-
 	$contactId = $inData["Contact_Id"];
-
+	
 	$conn = new mysqli("198.71.225.55:3306", "User", "Password1!", "Contacts");
 	if ($conn->connect_error)
 	{

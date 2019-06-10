@@ -2,7 +2,6 @@
 session_start();
 
 	$inData = getRequestInfo();
-
 	$searchResults = "";
 	$searchCount = 0;
 	$error = "";

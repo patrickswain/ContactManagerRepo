@@ -79,6 +79,10 @@ function addUser()
 	var user_first_name = document.getElementById("new_user_first_name").value;
 	var user_last_name = document.getElementById("new_user_last_name").value;
 
+	//var SHA512 = new Hashes.SHA512;
+	var SHA512 = new Hashes.MD5().hex(password);
+	password = SHA512;
+
 	// Set result indicator to blank
 	document.getElementById("user_added_result").innerHTML = "";
 

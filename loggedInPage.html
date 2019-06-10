@@ -24,12 +24,10 @@
                  onkeyup="searchContact()"
                  placeholder="Search for Contacts..."/>
           <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add Contact</button>
-          <button onclick = "logout()" clasee="btn btn-success">Logout</button>
+          <button onclick = "logout()" class = "btn btn-success">Logout</button>
         </div>
         <div id = "contactDisplay">
-          <button onclick ="displayAllContacts()">Display Contacts</button>
-          <label value="displayAllContacts()">contacts shown here</label>
-          <label id="displayAllContactsResults">Display contact results</label>
+          <button onclick ="displayAllContacts()" class = "btn btn-success">Display Contacts</button>
           <table class="table table-hover" id = "tableID">
             <thead class="thead-light">
               <tr>
@@ -48,7 +46,7 @@
         </div>
 
 
-      <label id = "contact_added_result">Contact added result</label>
+      <label id = "contact_added_result"></label>
       </div>
 
       <div class = "modal fade" role = "dialog" id = "editModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">

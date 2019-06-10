@@ -348,7 +348,10 @@ function editContactWindow(rowID, contactID)
 {
   var modal = document.getElementById("editModal");
   var saveBtn = document.getElementById("saveButtonEdit");
-  //saveBtn.addEventListener("click", editContact(contactID))
+  //saveBtn.addEventListener("click", editContact(contactID));
+	saveBtn.addEventListener("click", (function (rowID, contact_id)
+	{return function() {editContact(rowID, contact_id);
+	}})(rowID, contact_id));
 
   //var row = document.getElementById("contactID");
 	var table = document.getElementById("tableID");
@@ -367,9 +370,9 @@ function editContactWindow(rowID, contactID)
 	//modal.style.visibility
 }
 
-/*
+
 // patrick's function edited by baidong
- function editContact (contact_id)
+ function editContact (rowID, contactID)
  {
  	var editContactUrl = "/API/EditContact.php";
 
@@ -381,10 +384,13 @@ function editContactWindow(rowID, contactID)
 
  	var jsonText = '{"FirstName" : "' + edited_first_name + '",
  			              "LastName" : "' + edited_last_name + '",
- 										"Contact_ID"  : "' + contact_id + '",
+ 										"Contact_ID"  : "' + contactID + '",
  										"PhoneNumber" : "' + edited_phone + '",
  										"Email" : "' + edited_email + '",
  										"Address" : "' + edited_address +  '}';
+
+	//disregard this just testing
+	//var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';
 
  	// Connect to API
  	var xmlhr = new XMLHttpRequest();
@@ -398,20 +404,21 @@ function editContactWindow(rowID, contactID)
  			if (this.readyState == 4 && this.status == 200)
  			{
  				// Update HTML
-				document.getElementById("edited_first_textbox").innerHTML = edited_first;
-			  document.getElementById("edited_last_textbox").innerHTML = edited_last;
-			  document.getElementById("edited_phone_textbox").innerHTML = edited_phone;
-			  document.getElementById("edited_email_textbox").innerHTML = edited_email;
-			  document.getElementById("edited_address_textbox").innerHTML = edited_address;
+				table.rows[rowID].cells[0].innerHTML = edited_first;
+			  table.rows[rowID].cells[1].innerHTML = edited_last;
+			  table.rows[rowID].cells[2].innerHTML = edited_phone;
+			  table.rows[rowID].cells[3].innerHTML = edited_email;
+			  table.rows[rowID].cells[4].innerHTML = edited_address;
  			}
  		};
 
  	} catch (e) {
  		// Update HTML
- 		document.getElementById("contact_edited_result").innerHTML = e.message;
+		// using contact added result in meantime
+ 		document.getElementById("contact_added_result").innerHTML = e.message;
  	}
  }
- */
+
 
 
 

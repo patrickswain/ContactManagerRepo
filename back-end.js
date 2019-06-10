@@ -266,9 +266,12 @@ function displayAllContacts()
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
           // calls the editContact function and passes it the contactID as the rowID
-          btn1.addEventListener("click", function () {
-						editContactWindow(rowID, contact_id);
-					});
+          //btn1.addEventListener("click", function () {
+					//	editContactWindow(rowID, contact_id);
+					//});
+					btn1.addEventListener("click", (function (rowID, contact_id)
+			    {return function() {editContactWindow(rowID, contact_id);
+			    }})(rowID, contact_id));
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 
@@ -284,9 +287,12 @@ function displayAllContacts()
           var deleteButtonTextNode = document.createTextNode("Delete");
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID
-          btn2.addEventListener("click", function () {
-						deleteContact(rowID, contact_id);
-					});
+          //btn2.addEventListener("click", function () {
+					//	deleteContact(rowID, contact_id);
+					//});
+					btn2.addEventListener("click", (function (rowID, contact_id)
+			    {return function() {deleteContact(rowID, contact_id);
+			    }})(rowID, contact_id));
           cell7.appendChild(btn2);
 
         }

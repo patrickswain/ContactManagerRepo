@@ -102,7 +102,7 @@ function addUser()
 function addContact()
 {
 	// Testing
-	User_ID = 1;
+	USER_ID = 1;
 
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;

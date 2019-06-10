@@ -1,10 +1,10 @@
-var USER_ID = "";
+var USER_ID = 0;
 var firstName = "";
 var lastName = "";
 
 function login()
 {
-	var USER_ID = "0";
+	var USER_ID = 0;
 	var newUrl = "contactmngr.com/loggedInPage";
   // retrieve textbox information
 	var loginUsername = document.getElementById("username_textbox").value;
@@ -102,7 +102,7 @@ function addUser()
 function addContact()
 {
 	// Testing
-	USER_ID = 1;
+	//USER_ID = 1;
 
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;
@@ -268,6 +268,7 @@ function displayAllContacts()
           // calls the editContact function and passes it the contactID as the rowID
           btn1.addEventListener("click", function () {
 						editContactWindow(rowID, contact_id);
+					});
 					btn1.setAttribute("data-toggle","modal");
 					btn1.setAttribute("data-target","#editModal");
 

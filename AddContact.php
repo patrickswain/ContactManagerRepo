@@ -1,11 +1,10 @@
 <?php
-
-	session_start();
+session_start();
 
 	$inData = getRequestInfo();
 
-  //$userID= $_SESSION["User_ID"];
-	$userID = $inData["User_ID"];
+	$userID = 0;
+	//$userID = $inData["User_ID"];
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
 	$phoneNumber = $inData["PhoneNumber"];
@@ -19,10 +18,19 @@
 	}
 	else
 	{
+	  $userID = $_SESSION["User_ID"];
 		$sql = "INSERT INTO `ContactInfo` (`FirstName`, `LastName`, `User_ID`, `PhoneNumber`, `Email`, `Address` ) VALUES ('" . $firstName . "','" . $lastName . "','" . $userID. "','" . $phoneNumber . "','" . $email . "','" . $address . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );
+		}
+
+		$sql = "SELECT * FROM ContactInfo WHERE (User_ID = $userID) AND (FirstName = $firstName) AND (LastName = $lastName) AND (PhoneNumber = $phoneNumber) AND (Email = $email) AND (Address = $address)";
+		$result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0)
+		{
+      $row = mysqli_fetch_assoc($result);
+      returnWithInfo($row);
 		}
 		$conn->close();
 	}
@@ -44,5 +52,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
+	function     returnWithInfo($contact)
+	{
+		sendResultInfoAsJson( json_encode($contact) );
+	}
 
 ?>

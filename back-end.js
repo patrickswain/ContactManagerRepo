@@ -101,6 +101,9 @@ function addUser()
 
 function addContact()
 {
+	// Testing
+	User_ID = 1;
+
 	// Take in contact's info
 	var contact_first_name = document.getElementById("add_firstname_textbox").value;
 	var contact_last_name = document.getElementById("add_lastname_textbox").value;
@@ -111,7 +114,7 @@ function addContact()
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";
 
-	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID"  : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
+	var jsonText = '{"FirstName" : "' + contact_first_name + '","LastName" : "' + contact_last_name + '","User_ID" : "' + USER_ID + '","PhoneNumber" : "' + contact_phone + '","Email" : "' + contact_email + '","Address" : "' + contact_address +'"}';
 
 	// Connect to API
 	var url = "/API/AddContact.php";

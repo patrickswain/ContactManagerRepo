@@ -360,6 +360,7 @@ function editContactWindow(rowID, contactID)
 	saveBtn.addEventListener("click", (function (rowID, contactID)
 	{return function() {editContact(rowID, contactID);
 	}})(rowID, contactID));
+	saveBtn.setAttribute("data-dismiss", "modal");
 
   //var row = document.getElementById("contactID");
 	var table = document.getElementById("tableID");
@@ -400,6 +401,7 @@ function editContactWindow(rowID, contactID)
  	xmlhr.open("POST", editContactUrl, true);
  	xmlhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
+	table = document.getElementById("tableID");
  	// Send jsonText to API
  	try {
  		xmlhr.send(jsonText);

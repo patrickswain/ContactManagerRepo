@@ -3,8 +3,8 @@ session_start();
 
 	$inData = getRequestInfo();
 
-	//$userID = 0;
-	$userID = $inData["User_ID"];
+	$userID = "";
+	//$userID = $inData["User_ID"];
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
 	$phoneNumber = $inData["PhoneNumber"];

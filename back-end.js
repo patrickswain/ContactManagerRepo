@@ -382,12 +382,7 @@ function editContactWindow(rowID, contactID)
  	var edited_email = document.getElementById("edited_email_textbox").value;
  	var edited_address = document.getElementById("edited_address_textbox").value;
 
- 	var jsonText = '{"FirstName" : "' + edited_first_name + '",
- 			              "LastName" : "' + edited_last_name + '",
- 										"Contact_ID"  : "' + contactID + '",
- 										"PhoneNumber" : "' + edited_phone + '",
- 										"Email" : "' + edited_email + '",
- 										"Address" : "' + edited_address +  '}';
+ 	var jsonText = '{"FirstName" : "' + edited_first_name + '","LastName" : "' + edited_last_name + '","Contact_ID"  : "' + contactID + '","PhoneNumber" : "' + edited_phone + '","Email" : "' + edited_email + '","Address" : "' + edited_address +  '}';
 
 	//disregard this just testing
 	//var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';

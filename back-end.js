@@ -209,7 +209,7 @@ function addContactToDisplay(contactID)
 
 function displayAllContacts()
 {
-	USER_ID = 1;
+	USER_ID = sessionStorage.getItem("userID");
 	var url = "/API/ShowContacts.php";
 
 	var jsonText = '{"userID" : "' + USER_ID + '"}';
@@ -239,7 +239,7 @@ function displayAllContacts()
         for(i = 0; i < jsonObject.length; i++)
         {
           // insert a new row and set the row id with the contact id
-          var row = table1.insertRow(1);
+          var row = table1.insertRow(-1);
 					var contact_id = jsonObject[i].Contact_ID;
 					var rowID = i + 1;
           row.setAttribute("id", rowID);
@@ -349,9 +349,9 @@ function editContactWindow(rowID, contactID)
   var modal = document.getElementById("editModal");
   var saveBtn = document.getElementById("saveButtonEdit");
   //saveBtn.addEventListener("click", editContact(contactID));
-	saveBtn.addEventListener("click", (function (rowID, contact_id)
-	{return function() {editContact(rowID, contact_id);
-	}})(rowID, contact_id));
+	saveBtn.addEventListener("click", (function (rowID, contactID)
+	{return function() {editContact(rowID, contactID);
+	}})(rowID, contactID));
 
   //var row = document.getElementById("contactID");
 	var table = document.getElementById("tableID");

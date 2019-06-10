@@ -1,10 +1,9 @@
 <?php
-
-  session_start();
+session_start();
 
   $inData = getRequestInfo();
 
-  $userID= $_SESSION["User_ID"];
+  $userID = 0;
   $firstName = "";
   $lastName = "";
   $phoneNumber = "";
@@ -19,6 +18,7 @@
 	}
 	else
 	{
+    $userID = $_SESSION["User_ID"];
 		$sql = "SELECT * FROM ContactInfo where Contact_ID='" . $inData["id"] . "'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0)

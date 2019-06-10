@@ -346,11 +346,11 @@ function editContactWindow(rowID, contactID)
 	var table = document.getElementById("tableID");
 
 	//var row = contactID;
-  document.getElementById("edited_first_textbox").value = table.rows[rowID].cells[0].value;
-  document.getElementById("edited_last_textbox").value = table.rows[rowID].cells[1].value;
-  document.getElementById("edited_phone_textbox").value = table.rows[rowID].cells[2].value;
-  document.getElementById("edited_email_textbox").value = table.rows[rowID].cells[3].value;
-  document.getElementById("edited_address_textbox").value = table.rows[rowID].cells[4].value;
+  document.getElementById("edited_first_textbox").value = table.rows[rowID].cells[0].innerText;
+  document.getElementById("edited_last_textbox").value = table.rows[rowID].cells[1].innerText;
+  document.getElementById("edited_phone_textbox").value = table.rows[rowID].cells[2].innerText;
+  document.getElementById("edited_email_textbox").value = table.rows[rowID].cells[3].innerText;
+  document.getElementById("edited_address_textbox").value = table.rows[rowID].cells[4].innerText;
 
 	//$("#editModal").modal("show");
 	// modal.style.visibility = "visible";

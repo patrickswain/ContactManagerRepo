@@ -229,6 +229,11 @@ function displayAllContacts()
 				// phone # and email and contact id
         var jsonObject = JSON.parse( xhr.responseText );
 
+				if (jsonObject == "No records found")
+				{
+					return;
+				}
+
         var i;
 				// gets the div id of the spot on the homepage where displayAllContacts will go.
         var homepageDiv = document.getElementById("contactDisplay");
@@ -318,7 +323,7 @@ function displayAllContacts()
 
 function deleteContact(rowID, contactID)
 {
-	/*
+
 	 var url = "/API/DeleteContact.php"
 	 // creates the json text with contact id and userid
    var jsonText = '{"Contact_Id" : "' + contactID + '"}';
@@ -347,7 +352,7 @@ function deleteContact(rowID, contactID)
 	 	Console.log(err);
 	 	//document.getElementById("deletedContactResult").innerHTML = err.message;
 	 }
-	 */
+
 }
 
 
@@ -391,7 +396,7 @@ function editContactWindow(rowID, contactID)
  	var edited_email = document.getElementById("edited_email_textbox").value;
  	var edited_address = document.getElementById("edited_address_textbox").value;
 
- 	var jsonText = '{"FirstName" : "' + edited_first_name + '","LastName" : "' + edited_last_name + '","Contact_ID"  : "' + contactID + '","PhoneNumber" : "' + edited_phone + '","Email" : "' + edited_email + '","Address" : "' + edited_address +  '}';
+ 	var jsonText = '{"FirstName" : "' + edited_first + '","LastName" : "' + edited_last + '","Contact_ID" : "' + contactID + '","PhoneNumber" : "' + edited_phone + '","Email" : "' + edited_email + '","Address" : "' + edited_address +  '"}';
 
 	//disregard this just testing
 	//var jsonText = '{"UserName" : "' + username + '","Password" : "' + password + '","FirstName" : "' + user_first_name + '","LastName" : "' + user_last_name + '"}';

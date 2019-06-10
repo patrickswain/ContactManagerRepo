@@ -64,6 +64,7 @@ function login()
 function logout()
 {
 	USER_ID = 0;
+	sessionStorage.setItem("userID", 0);
 	firstName = "";
 	lastName = "";
 

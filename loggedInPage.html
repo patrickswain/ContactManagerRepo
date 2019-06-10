@@ -14,11 +14,11 @@
   		<meta charset = "utf-8" />
           <title>CONTACT MNGR</title>
     </head>
-    <body>
+    <body style="background-color:#FFFEEF;">
 			<div id = "contactsPage">
         <div id = "topOfPage">
           <h1> Contact MNGR</h1>
-          <p> Welcome insertfirstname insertlastname </p>
+          <p innerHTML = 'Welcome ' + sessionStorage.getItem("firstName") + sessionStorage.getItem("lastName")></p>
           <input type = "text"
                  id = "search_textbox"
                  onkeyup="searchContact()"
@@ -31,7 +31,7 @@
           <button onclick ="displayAllContacts()">Display Contacts</button>
           <label value="displayAllContacts()">contacts shown here</label>
           <label id="displayAllContactsResults">Display contact results</label>
-          <table class="table" id = "tableID">
+          <table class="table table-hover" id = "tableID">
             <thead class="thead-light">
               <tr>
                 <th scope="col">First Name</th>

@@ -51,6 +51,9 @@ function login()
 		firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
 
+		sessionStorage.setItem("firstName") = firstName;
+		sessionStorage.setItem("lastName") = lastName;
+
 		document.getElementById("username_textbox").value = "";
 		document.getElementById("password_textbox").value = "";
 		document.getElementById("login_result").innerHTML = "logged in";
@@ -280,7 +283,7 @@ function displayAllContacts()
           var cell6 = row.insertCell(5);
           var btn1 = document.createElement("button");
           btn1.setAttribute("type", "button");
-          btn1.setAttribute("class", "btn btn-primary");
+          btn1.setAttribute("class", "btn btn-success");
 					btn1.setAttribute("id", "rowID");
           var editButtonTextNode = document.createTextNode("Edit");
           btn1.appendChild(editButtonTextNode);
@@ -302,7 +305,7 @@ function displayAllContacts()
           var cell7 = row.insertCell(6);
           var btn2 = document.createElement("button");
           btn2.setAttribute("type", "button");
-          btn2.setAttribute("class", "btn btn-primary");
+          btn2.setAttribute("class", "btn btn-success");
           var deleteButtonTextNode = document.createTextNode("Delete");
           btn2.appendChild(deleteButtonTextNode);
           // calls the deleteContact function and passes it the contactID as the rowID

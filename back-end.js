@@ -129,8 +129,8 @@ function addContact()
 		var jsonObject = JSON.parse( xmlhr.responseText );
 
     // get contact id from the updated jsonObject
-		contactID = jsonObject.ID;
-		
+		contactID = jsonObject.contactID;
+
 		xmlhr.onreadystatechange =function(){
 			if (this.readyState == 4 && this.status == 200)
 			{

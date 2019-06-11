@@ -60,9 +60,9 @@ function login()
 
 		window.location.href = "loggedInPage.html";
 
-		function () {
-			displayAllContacts();
-		};
+		//function () {
+		//	displayAllContacts();
+		//};
 	}
 	catch(err)
 	{

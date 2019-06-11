@@ -333,7 +333,8 @@ function displayAllContacts()
 	}
 	catch(err)
 	{
-		document.getElementById("displayAllContactsResults").innerHTML = err.message;
+		Console.log(err.message);
+		//document.getElementById("displayAllContactsResults").innerHTML = err.message;
 	}
 }
 

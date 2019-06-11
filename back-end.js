@@ -168,8 +168,8 @@ function addContact()
 // new function to add contact to display
 function addContactToDisplay(contactID)
 {
-	//table1 = document.getElementById("tableID");
-	var table1 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+	var table1 = document.getElementById("tableID");
+	//var table1 = document.getElementById('tableID').getElementsByTagName('tbody')[0];
 
 	var rowID = table1.rows.length;
 	var row = table1.insertRow(-1);
@@ -256,8 +256,8 @@ function displayAllContacts()
         var homepageDiv = document.getElementById("contactDisplay");
 
         // get tableid
-        //var table1 = document.getElementById("tableID");
-				var table1 = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+        var table1 = document.getElementById("tableID");
+				//var table1 = document.getElementById('tableID').getElementsByTagName('tbody')[0];
 
         for(i = 0; i < jsonObject.length; i++)
         {

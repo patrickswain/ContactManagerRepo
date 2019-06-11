@@ -24,7 +24,7 @@ session_start();
 			returnWithError( $conn->error );
 		}
 
-		$sql = "SELECT Contact_ID, FROM ContactInfo where (User_ID= $userID) and (FirstName= $FirstName) and (LastName= $lastName)";
+		$sql = "SELECT * FROM ContactInfo where (User_ID= $userID) and (FirstName= $firstName) and (LastName= $lastName)";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{

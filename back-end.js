@@ -129,7 +129,7 @@ function addContact()
 	var contact_email = document.getElementById("add_email_textbox").value;
 	var contact_phone = document.getElementById("add_phone_textbox").value;
 	var contact_address = document.getElementById("add_address_textbox").value;
-	addContactToDisplay(contactID);
+
 	// Set result intdicator to blank
 	document.getElementById("contact_added_result").innerHTML = "";
 
@@ -158,7 +158,7 @@ function addContact()
 			}
 		};
 
-		//addContactToDisplay(contactID);
+		addContactToDisplay(contactID);
 	} catch (e) {
 		// Update HTML
 		document.getElementById("contact_added_result").innerHTML = e.message;

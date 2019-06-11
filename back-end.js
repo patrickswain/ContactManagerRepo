@@ -333,7 +333,7 @@ function displayAllContacts()
 	}
 	catch(err)
 	{
-		Console.log(err.message);
+		console.log(err.message);
 		//document.getElementById("displayAllContactsResults").innerHTML = err.message;
 	}
 }
@@ -366,7 +366,7 @@ function deleteContact(rowID, contactID)
 	 }
 	 catch(err)
 	 {
-	 	Console.log(err);
+	 	console.log(err.message);
 	 	//document.getElementById("deletedContactResult").innerHTML = err.message;
 	 }
 

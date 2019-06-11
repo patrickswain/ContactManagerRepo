@@ -348,8 +348,10 @@ function deleteContact(rowID, contactID)
    var jsonText = '{"Contact_Id" : "' + contactID + '"}';
 
 	 // remove the row in the html for that contact
-	 var table = document.getElementById("tableID");
-	 table.deleteRow(rowID);
+	 //var table = document.getElementById("tableID");
+	 var row = document.getElementById(rowID);
+	 row.parentNode.removeChild(row);
+	 //table.deleteRow(rowID);
 
    var xhr = new XMLHttpRequest();
 	 xhr.open("POST", url, true);

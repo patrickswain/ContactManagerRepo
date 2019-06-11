@@ -28,7 +28,7 @@ session_start();
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
-
+			$row = $result->fetch_assoc();
 			$contactID = $row["Contact_ID"];
 
 			returnWithInfo($contactID);

@@ -24,12 +24,14 @@ session_start();
 			returnWithError( $conn->error );
 		}
 
-		$sql = "SELECT * FROM ContactInfo WHERE (User_ID = $userID) AND (FirstName = $firstName) AND (LastName = $lastName) AND (PhoneNumber = $phoneNumber) AND (Email = $email) AND (Address = $address)";
-		$result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0)
+		$sql = "SELECT Contact_ID, FROM ContactInfo where (User_ID= $userID) and (FirstName= $FirstName) and (LastName= $lastName)";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0)
 		{
-      $row = mysqli_fetch_assoc($result);
-      returnWithInfo($row);
+
+			$contactID = $row["Contact_ID"];
+
+			returnWithInfo($contactID);
 		}
 		$conn->close();
 	}

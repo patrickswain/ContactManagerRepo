@@ -27,13 +27,16 @@ session_start();
 
 		$sql = "SELECT * FROM ContactInfo where (User_ID= $userID) and (FirstName= $firstName) and (LastName= $lastName)";
 		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
+		$result = mysqli_query($conn, $sql);
+    $contacts = array();
+		if (mysqli_num_rows($result) > 0)
 		{
-			$row = $result->fetch_assoc();
-			$contactID = $row["Contact_ID"];
-
-			returnWithInfo($contactID);
-		}
+      while($row = mysqli_fetch_assoc($result))
+      {
+        $contacts[] = $row;
+      }
+      returnWithInfo($contacts);
+    }
 		$conn->close();
 	}
 
@@ -58,10 +61,9 @@ session_start();
 	// {
 	// 	sendResultInfoAsJson( json_encode($contact) );
 	// }
-	function returnWithInfo( $contactID)
+	function     returnWithInfo($contacts)
 	{
-		$retValue = '{"contactID":"' . $contactID . '"}';
-		sendResultInfoAsJson( $retValue );
+	  sendResultInfoAsJson( json_encode($contacts) );
 	}
 
 ?>

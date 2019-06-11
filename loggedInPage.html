@@ -14,7 +14,7 @@
   		<meta charset = "utf-8" />
           <title>CONTACT MNGR</title>
     </head>
-    <body style="background-color:#FFFEEF;">
+    <body style="background-color:#FFFEEF;" onload = "displayAllContacts()">
 			<div id = "contactsPage">
         <div id = "topOfPage">
           <h1> Contact MNGR</h1>
@@ -27,7 +27,6 @@
           <button onclick = "logout()" class = "btn btn-success">Logout</button>
         </div>
         <div id = "contactDisplay">
-          <button onclick ="displayAllContacts()" class = "btn btn-success">Display Contacts</button>
           <table class="table table-hover" id = "tableID">
             <thead class="thead-light">
               <tr>

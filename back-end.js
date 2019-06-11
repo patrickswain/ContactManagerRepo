@@ -60,9 +60,9 @@ function login()
 
 		window.location.href = "loggedInPage.html";
 
-		function () {
-			displayAllContacts();
-		};
+		//function () {
+		//	displayAllContacts();
+		//};
 	}
 	catch(err)
 	{
@@ -168,7 +168,8 @@ function addContact()
 // new function to add contact to display
 function addContactToDisplay(contactID)
 {
-	table1 = document.getElementById("tableID");
+	var table1 = document.getElementById("tableID");
+	//var table1 = document.getElementById('tableID').getElementsByTagName('tbody')[0];
 
 	var rowID = table1.rows.length;
 	var row = table1.insertRow(-1);
@@ -256,6 +257,7 @@ function displayAllContacts()
 
         // get tableid
         var table1 = document.getElementById("tableID");
+				//var table1 = document.getElementById('tableID').getElementsByTagName('tbody')[0];
 
         for(i = 0; i < jsonObject.length; i++)
         {
@@ -333,7 +335,8 @@ function displayAllContacts()
 	}
 	catch(err)
 	{
-		document.getElementById("displayAllContactsResults").innerHTML = err.message;
+		console.log(err.message);
+		//document.getElementById("displayAllContactsResults").innerHTML = err.message;
 	}
 }
 
@@ -345,8 +348,10 @@ function deleteContact(rowID, contactID)
    var jsonText = '{"Contact_Id" : "' + contactID + '"}';
 
 	 // remove the row in the html for that contact
-	 var table = document.getElementById("tableID");
-	 table.deleteRow(rowID);
+	 //var table = document.getElementById("tableID");
+	 var row = document.getElementById(rowID);
+	 row.parentNode.removeChild(row);
+	 //table.deleteRow(rowID);
 
    var xhr = new XMLHttpRequest();
 	 xhr.open("POST", url, true);
@@ -365,7 +370,7 @@ function deleteContact(rowID, contactID)
 	 }
 	 catch(err)
 	 {
-	 	Console.log(err);
+	 	console.log(err.message);
 	 	//document.getElementById("deletedContactResult").innerHTML = err.message;
 	 }
 

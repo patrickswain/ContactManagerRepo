@@ -4,6 +4,7 @@
       <script src="back-end.js"></script>
       <script src="javacode.js"></script>
       <script src="hashes.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Directory Log In</title>
 		<style>
@@ -156,9 +157,9 @@
 				<div class="container">
 					<h1> Directory Log In</h1>
 					<input placeholder="Username" id="username_textbox" required><br>
-					<input placeholder="Password" id="password_textbox" required><br>
-					<button onclick = "login()" >Login </button>
-          <label id="login_result">Login Result : Undefined</label>
+					<input placeholder="Password" id="password_textbox" required type="password"><br>
+					<button class="btn btn-success" onclick = "login()" >Login </button>
+          <label id="login_result"></label>
 				</div>
 
 				<div class="container" style="background-color:#f1f1f1">
@@ -184,18 +185,18 @@
 						<h1> Sign up </h1>
 						<input placeholder="New Username" id="new_user_name" required type="username"><br>
 						<input placeholder="New Password" id="new_password" name="passwordsignup" required type="password"><br>
-						<input placeholder="New First Name" id="new_user_first_name" name="passwordsignup_confirm" required type="password"><br>
-            <input placeholder="New Last Name" id="new_user_last_name" name="passwordsignup_confirm" required type="password"><br>
-            <label id="user_added_result">User added result</label>
+						<input placeholder="New First Name" id="new_user_first_name" name="passwordsignup_confirm" required type="username"><br>
+            <input placeholder="New Last Name" id="new_user_last_name" name="passwordsignup_confirm" required type="username"><br>
+            <label id="user_added_result"></label>
 					</div>
 
 					<p class="signin button">
-						<button onclick = "addUser()" >Register </button>
+						<button class="btn btn-success" onclick = "addUser()" >Register </button>
 					</p>
 
-					<div class="container2" style="background-color:#f1f1f1">
+					<!-- <div class="container2" style="background-color:#f1f1f1">
 						<span class="logHyperlink">Already a member? <a href="#">Log in</a></span>
-					</div>
+					</div> -->
 				</p>
 			</form>
 		</div>

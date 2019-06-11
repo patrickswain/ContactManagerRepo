@@ -53,9 +53,14 @@ session_start();
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function     returnWithInfo($contact)
+	function returnWithInfo($contact)
 	{
 		sendResultInfoAsJson( json_encode($contact) );
 	}
+	// function returnWithInfo( $row )
+	// {
+	// 	$retValue = '{"contactID":"' . $row . '"}';
+	// 	sendResultInfoAsJson( $retValue );
+	// }
 
 ?>
